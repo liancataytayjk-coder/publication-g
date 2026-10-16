@@ -1,0 +1,2 @@
+check,sample,n,value,pass_rule,pass
+"corr of q/q SA growth, ours vs PSA",2000Q2-2026Q2,105,0.9784,>= 0.90,True

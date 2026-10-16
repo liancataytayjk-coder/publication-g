@@ -1,0 +1,19 @@
+label,party,start,source
+Tr1,D,1945-04-12,"pre-sample term (Truman, first), only to charge 1949Q1"
+Tr,D,1949-01-20,"Blinder and Watson (2014, NBER WP 20324) p. 2: terms Truman-2 to Obama-1; inaugurations 20 January"
+Ei1,R,1953-01-20,same
+Ei2,R,1957-01-20,same
+KJ,D,1961-01-20,same (Kennedy-Johnson treated as one term)
+Jo,D,1965-01-20,same
+Ni,R,1969-01-20,same
+NF,R,1973-01-20,same (Nixon-Ford treated as one term)
+Ca,D,1977-01-20,same
+Re1,R,1981-01-20,same
+Re2,R,1985-01-20,same
+BI,R,1989-01-20,same
+Cl1,D,1993-01-20,same
+Cl2,D,1997-01-20,same
+BII1,R,2001-01-20,same
+BII2,R,2005-01-20,same
+Ob1,D,2009-01-20,same
+Ob2,D,2013-01-20,"post-sample term, only to end Ob1 at 2013Q1"

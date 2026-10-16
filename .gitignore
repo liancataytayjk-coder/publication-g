@@ -6,3 +6,4 @@ deliverables/
 .pytest_cache/
 output/*_log.txt
 docs/reference/
+.tools/

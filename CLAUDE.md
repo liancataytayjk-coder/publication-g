@@ -138,6 +138,8 @@ AER version itself is blocked here (403); see Open questions.
 | D9 | 2026-10-16 | Replication gate on US data at the paper's own data vintage (ALFRED GDPC1, vintage 2014-07-01), criteria below. | The vintage is available, so the gate can be numeric, not qualitative. | pre-registered |
 | D10 | 2026-10-16 | Replaces the source in D3: the main outcome series is PSA's own quarterly GDP at constant 2018 prices, 1981Q1–2026Q2 (OpenSTAT `0952B5BQEQ1`). Our seasonal adjustment is checked against PSA's own seasonally adjusted GDP, 2000Q1–2026Q2 (`012B5BEXS1`), with the same pass rule (correlation of quarterly growth ≥ 0.90). The IMF series is kept as a cross-check only. | The OpenSTAT data API is reachable (only PSA's web pages sit behind a bot check). The long series equals PSA's current table over 2000–2026 exactly and the IMF copy to within 0.14 points of year-on-year growth, and it runs to 2026Q2 instead of 2024Q3. Changed before any estimate. | pre-registered |
 | D11 | 2026-10-16 | User confirmations: peers Indonesia, Malaysia and Thailand (Vietnam as robustness); quarterly 1981 onwards as the main sample; the incomplete Marcos Jr. term also compared at the same point in each term. The `lian-signature-style` skill is dropped; the empirical-econ-study style applies. | User reply, 2026-10-16. | pre-registered |
+| D13 | 2026-10-16 | All GDP growth rates are quarterly growth at a compounded annual rate, 100·[(GDP_t/GDP_{t−1})⁴ − 1], replacing 400·Δln GDP in D3 and in the gate text. Log growth is kept as robustness. | The first gate run failed G1: both party means were 0.13 too low, which is the average compounding term g²/200. With the compounded rate the means, gap, overall mean and standard deviations match the paper to two decimals. Fixed before any Philippine estimate. | pre-registered (correction) |
+| D14 | 2026-10-16 | Shock lags 0–6 (current and six lags), by the gate's pre-set rule. | G3: lags 0–6 explain 0.481 and lags 1–6 0.479 of the target 0.50; 0–6 is closer. | pre-registered |
 | D12 | 2026-10-16 | Shock series fixed (completes D6): (i) oil: Hamilton net oil price increase on WPU0561; (ii) foreign demand: US real GDP growth (GDPC1), purged of Philippine feedback by taking the residual from a regression on 4 own lags and current + 4 lags of Philippine growth, as the reference does for Europe; robustness from 1995: the equal-weight average of US, Japan and euro-area growth, purged the same way; (iii) El Niño: max(0, ONI) averaged over the quarter; (iv) financial conditions: the Gilchrist–Zakrajšek excess bond premium, quarterly average, purged like (ii), available from 1973. | These are the long quarterly series that can be downloaded here. No quarterly GDP for Japan before 1994 or China before 2011 is reachable, so the main foreign-demand shock uses the United States, the largest export market for most of the sample. Fixed before any Philippine estimate. | pre-registered |
 
 ## Replication gate (pre-registered 2026-10-16, before any estimate)
@@ -163,18 +165,88 @@ The gate passes if G1–G4 all hold. If it fails, stop, re-read the specificatio
 fix the code and record what changed. Pass ranges are not loosened after the
 results are seen.
 
-**Result:** not yet run.
+**Result (2026-10-16): PASS on the second run** (`output/tables/replication_gate.csv`,
+`scripts/04_replicate.py`). First run: FAIL on G1. The D–R gap (1.75), G2, G3
+(0.47) and G4 passed, but both party means were about 0.13 too low (D 4.19, R
+2.44), because the gate text above assumed log growth, 400·Δln GDP. The paper's
+"annualized growth" is the compounded rate, 100·[(GDP_t/GDP_{t−1})⁴ − 1]; the
+difference, about g²/200 on average, is exactly the shortfall. Fix (D13): all GDP
+growth rates use the compounded rate. Pass ranges unchanged. Second run: D 4.346,
+R 2.543, gap 1.803 (overall mean 3.332 against the paper's 3.33; s.d. 3.83 and
+3.94 against "3.8 and 3.9"); NW s.e. 0.637; randomization p = 0.011; oil-explained
+gap 0.481 with lags 0–6 (0.479 with lags 1–6), so lags 0–6 are adopted (D14);
+term-by-term oil effects correlate 0.996 with Table 7, same sign in 16 of 16.
 
-## Estimation plan
+## Estimation plan (pre-specified 2026-10-16, after the gate, before any Philippine estimate)
 
-To be written in full, and dated, after Phase 2 fixes the shock series and
-before the first Philippine estimate. It will cover: RQ1 means, standard errors
-and the shift test, on raw, per-person and peer-relative growth; RQ2 one shock
-at a time and jointly (as in Tables 6 and 10), with each administration's
-explained and unexplained premium (as in Table 7); RQ3 first-year forecasts
-(AR(4), bounce-back AR); RQ4 the same-point-in-term comparison; and robustness:
-timing lags 0/2/4, excluding 2020Q2–2021Q1, excluding the 1984–85 crisis,
-annual long sample, and Vietnam in the peer group.
+**Common settings.** Outcome y_t: Philippine real GDP growth, quarterly, at a
+compounded annual rate (D13), from PSA's constant-2018-price series adjusted by
+X-13ARIMA-SEATS (log, automatic outliers, no trading-day effects; D10; our
+adjusted growth correlates 0.978 with PSA's own adjusted series, 2000Q2–2026Q2,
+`output/tables/sa_check.csv`). Sample 1981Q2–2026Q2 (181 quarters). Quarters are
+charged by D4 (lag 1): Marcos Sr. 1981Q2–1986Q2 (21 quarters), C. Aquino
+1986Q3–1992Q3 (25), Ramos 1992Q4–1998Q3 (24), Estrada 1998Q4–2001Q1 (10), Arroyo
+2001Q2–2010Q3 (38), Aquino III 2010Q4–2016Q3 (24), Duterte 2016Q4–2022Q3 (24),
+Marcos Jr. 2022Q4–2026Q2 (15, incomplete). Standard errors: Newey–West, 6 lags.
+Shock lags: 0–6 (D14). Multiple testing: within each table of eight
+administration premiums, p-values are also reported with a Holm correction.
+
+**RQ1 (facts).** (a) Raw premium P_a = ȳ_a − ȳ for each administration, with
+an NW s.e. (from the regression of y on a constant and the administration's
+dummy, scaled by (n − n_a)/n). (b) The circular-shift test of "no differences"
+(D7) on the between-administration sum of squares. H1a is supported if the
+shift-test p < 0.05. (c) Per person: y_t minus that year's population growth
+(World Bank SP.POP.TOTL); same statistics. (d) Long view and peers, annual
+1962–2025, years charged by D4: premiums of PSA annual growth and of growth
+relative to the mean of Indonesia, Malaysia and Thailand (World Bank), with the
+shift test on each. H1b is supported if the dispersion of premiums (the
+year-weighted standard deviation of P_a across administrations) of
+peer-relative growth is less than half that of raw annual growth.
+
+**RQ2 (luck).** Shocks (D12): oil = Hamilton net increase on WPU0561; US =
+US growth purged of Philippine growth (residual on a constant, 4 own lags and
+current + 4 lags of y); El Niño = max(0, ONI) quarterly mean; EBP = excess
+bond premium purged the same way. (a) One shock at a time (Table 6 analogue):
+each administration's explained premium and s.e. (b) All four jointly (Table
+10 analogue; sample 1983Q4–2026Q2, set by the purging and lags). (c) For each
+administration, raw, explained and unexplained premium on the joint sample.
+(d) Summary: the share of the dispersion of premiums explained by luck,
+S = 1 − Σ_a n_a U_a² / Σ_a n_a P_a², where U_a is the unexplained premium. H2a
+(about half, as in the US) is supported if 0.35 ≤ S ≤ 0.65; H2b (more than
+half) if S > 0.65; neither if S < 0.35. S is descriptive; inference is carried
+by each administration's explained premium and its s.e.
+
+**RQ3 (inheritance).** For each administration that starts inside the sample
+(C. Aquino to Marcos Jr.), forecasts of growth over its first four charged
+quarters, 100·ln(GDP_{s+3}/GDP_{s−1}), made with data through the quarter
+before it starts (s − 1), from (i) an AR model: four-quarter log growth on the
+current and four lags of quarterly log growth (Blinder and Watson Table 5 note);
+(ii) a bounce-back AR that adds the current and four lags of a recession
+indicator R_t (1 if seasonally adjusted q/q growth < 0) and their interactions
+with growth. Both are estimated on the full sample, as in the reference's Table
+5 panels C–D. H3 is supported for an administration if the bounce-back forecast
+exceeds the sample mean of four-quarter growth by at least half of the actual
+first-year excess; it is judged for C. Aquino and Marcos Jr.
+
+**RQ4 (current administration, descriptive).** With N = 15 (the Marcos Jr.
+quarters observed), each administration's raw and luck-adjusted (y − ĉ, from the
+joint model) average over its first N charged quarters, and its difference from
+Marcos Jr. with an NW s.e. Marcos Sr. is excluded (his first quarters are
+outside the sample).
+
+**Objective 1 scorecard (descriptive).** Annual 1961–2025, years charged by
+D4, Macapagal to Marcos Jr. (Marcos Jr. 2023–2025): PSA real GDP growth; World
+Bank GDP per capita growth, CPI inflation, unemployment (ILO modelled,
+1991–); peer-relative growth. Each as the administration mean and as a z-score,
+z = (administration mean − 1961–2025 mean) / s.d. of the annual values. No
+composite index and no ranking of presidents.
+
+**Robustness** (for RQ1 raw premiums and the RQ2 joint model): (a) timing lags
+0, 2 and 4 quarters; (b) excluding 2020Q2–2021Q1 (pandemic); (c) excluding
+1984Q1–1985Q4 (debt crisis); (d) log growth (400·Δln) instead of compounded;
+(e) lags 1–6; (f) foreign demand as the purged equal-weight average of US,
+Japan and euro-area growth (sample from 1997); (g) Vietnam added to the peers
+(annual, from 1985).
 
 ## Results
 
@@ -187,9 +259,11 @@ None yet.
 
 ## Pipeline
 
-Downloads: `scripts/01_download_{psa,fred,worldbank,other}.py` (Phase 2,
-2026-10-16). Cleaning, seasonal adjustment, the panel, the gate and estimation
-are not yet built. `./run_all.sh` will rebuild everything from `data/raw/`.
+`scripts/01_download_*.py` (raw data) → `scripts/00_get_x13.sh` (X-13 binary
+into `.tools/`, not committed) → `scripts/02_clean.py` (processed tables,
+seasonal adjustment) → `scripts/04_replicate.py` (gate) → estimation (to come).
+Estimator and helpers in `phadmin/`; simulation tests in `tests/` (11 pass).
+`./run_all.sh` rebuilds everything from `data/raw/`.
 
 ## Open questions
 

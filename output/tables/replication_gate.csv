@@ -1,0 +1,11 @@
+criterion,statistic,target,estimate,pass_range,pass
+G1,D mean growth,4.35,4.346,"[4.25, 4.45]",True
+G1,R mean growth,2.54,2.543,"[2.44, 2.64]",True
+G1,D-R gap,1.8,1.803,"[1.7, 1.9]",True
+G2,Newey-West (6) s.e. of gap,0.64,0.637,"[0.54, 0.74]",True
+G2,randomization p-value (16 blocks),0.01,0.011,"[0.0, 0.03]",True
+G3 (info),"oil-explained gap, lags 0-6 (s.e. 0.11, n=256)",0.5,0.481,"[0.4, 0.6]",True
+G3 (info),"oil-explained gap, lags 1-6 (s.e. 0.11, n=256)",0.5,0.479,"[0.4, 0.6]",True
+G3,"oil-explained gap, adopted reading: lags 0-6",0.5,0.481,"[0.4, 0.6]",True
+G4,corr. of term oil effects with Table 7,>=0.90,0.996,"[0.9, 1.0]",True
+G4,terms with the same sign (of 16),>=14,16.0,"[14, 16]",True
