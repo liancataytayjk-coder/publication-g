@@ -4,7 +4,7 @@
 administrations, 1961–2026.* A replication of Blinder and Watson (2016,
 *American Economic Review*) on Philippine data.
 
-Status: data, replication gate (passed), estimation and figures complete (`output/`). Documents (manuscript) not yet written. Rebuild everything with `./run_all.sh`.
+Status: complete draft. Data, replication gate (passed), estimation, figures and the journal manuscript are done. Rebuild everything with `./run_all.sh`. What remains for the author is in `paper/SUBMISSION_CHECKLIST.md`.
 
 | File | What it is |
 | --- | --- |
@@ -13,6 +13,11 @@ Status: data, replication gate (passed), estimation and figures complete (`outpu
 | `data/manual/administrations.csv` | Presidents' term dates, with source |
 | `data/raw/source_log.md` | One row per raw data file |
 | `replication/blinder_watson2016_targets.csv` | The reference paper's numbers the replication must hit |
+| `paper/manuscript.docx` | The journal manuscript (rendered; edit `paper/manuscript_template.md`) |
+| `docs/statistical_annex.docx` | Every generated table |
+| `paper/SUBMISSION_CHECKLIST.md` | What remains before submission |
+| `docs/session_handoff.Rmd` | How to resume in a new session |
+| `output/tables/`, `output/figures/` | All estimates and figures, written by scripts |
 | `paper/references.bib` | References, each checked on Crossref |
 | `scripts/` | Helper scripts (Crossref check, figure style, document rendering) |
 

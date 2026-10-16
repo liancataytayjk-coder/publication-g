@@ -40,7 +40,7 @@ for c in ["oil_hamilton", "elnino", "oni", "g_us", "g_jp", "g_ea", "ebp"]:
     pq[c] = sh[c].reindex(q)
 pq["g_partners"] = pq[["g_us", "g_jp", "g_ea"]].mean(axis=1, skipna=False)
 pq.to_parquet(PROC / "panel_q.parquet")
-cal = pq["admin"].dropna()
+cal = pq["admin"][pq["y"].notna()].dropna()  # quarters with a growth value
 cal = cal.groupby(cal, sort=False).agg(first=lambda x: str(x.index.min()), last=lambda x: str(x.index.max()),
                                        quarters="size")
 cal.to_csv(TAB / "admin_calendar.csv")

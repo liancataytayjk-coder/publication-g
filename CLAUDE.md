@@ -297,15 +297,21 @@ Japan and euro-area growth (sample from 1997); (g) Vietnam added to the peers
 ## Documents
 
 - `docs/feasibility_note.md`: what can and cannot be done, and with what data
-  (Phase 1).
+  (Phase 1; written by hand before any result).
+- `paper/manuscript_template.md` → `scripts/08_paper.py` → `paper/manuscript.md`
+  / `.docx` (IMRAD journal manuscript; numbers in `output/tables/paper_numbers.json`).
+- `docs/statistical_annex_template.md` → `scripts/08_paper.py` →
+  `docs/statistical_annex.md` / `.docx` (every generated table).
+- `paper/SUBMISSION_CHECKLIST.md`: what remains before submission.
+- `docs/session_handoff.Rmd`: how to resume in a new session.
 
 ## Pipeline
 
 `scripts/01_download_*.py` (raw data) → `scripts/00_get_x13.sh` (X-13 binary
 into `.tools/`, not committed) → `scripts/02_clean.py` (processed tables,
 seasonal adjustment) → `scripts/03_build_panel.py` → `scripts/04_replicate.py` (gate) →
-`scripts/05_estimate.py` (RQ1–RQ4, scorecard, robustness) → `scripts/06_figures.py`.
-Documents (manuscript from templates) to come.
+`scripts/05_estimate.py` (RQ1–RQ4, scorecard, robustness) → `scripts/06_figures.py`
+→ `scripts/08_paper.py` (manuscript and annex).
 Estimator and helpers in `phadmin/`; simulation tests in `tests/` (11 pass).
 `./run_all.sh` rebuilds everything from `data/raw/`.
 
@@ -320,3 +326,5 @@ Estimator and helpers in `phadmin/`; simulation tests in `tests/` (11 pass).
       `data/raw/wiki/`), because the Official Gazette blocks this container.
       The user should spot-check them against the Official Gazette.
 - [ ] Target journal: to be chosen by the user.
+- [ ] Manuscript placeholders: author block, AI-use statement, repository URL
+      (`paper/SUBMISSION_CHECKLIST.md`).
