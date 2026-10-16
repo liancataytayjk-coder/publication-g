@@ -1,0 +1,11 @@
+admin_id,president,short,start_date,end_date,party_at_start,how_term_began,how_term_ended,source
+garcia,Carlos P. Garcia,Garcia,1957-03-18,1961-12-30,Nacionalista,succession (death of Magsaysay),election,data/raw/wiki/list_of_presidents_of_the_philippines_20261016.html.gz
+macapagal,Diosdado Macapagal,Macapagal,1961-12-30,1965-12-30,Liberal,election,election,data/raw/wiki/list_of_presidents_of_the_philippines_20261016.html.gz
+marcos_sr,Ferdinand E. Marcos,Marcos Sr.,1965-12-30,1986-02-25,Nacionalista (KBL from 1978),election,removed (People Power),data/raw/wiki/list_of_presidents_of_the_philippines_20261016.html.gz
+aquino_c,Corazon C. Aquino,C. Aquino,1986-02-25,1992-06-30,UNIDO,People Power,election,data/raw/wiki/list_of_presidents_of_the_philippines_20261016.html.gz
+ramos,Fidel V. Ramos,Ramos,1992-06-30,1998-06-30,Lakas,election,election,data/raw/wiki/list_of_presidents_of_the_philippines_20261016.html.gz
+estrada,Joseph E. Estrada,Estrada,1998-06-30,2001-01-20,LAMMP,election,removed (EDSA II),data/raw/wiki/list_of_presidents_of_the_philippines_20261016.html.gz
+arroyo,Gloria Macapagal Arroyo,Arroyo,2001-01-20,2010-06-30,Lakas,succession (vice president),election,data/raw/wiki/list_of_presidents_of_the_philippines_20261016.html.gz
+aquino_b,Benigno S. Aquino III,Aquino III,2010-06-30,2016-06-30,Liberal,election,election,data/raw/wiki/list_of_presidents_of_the_philippines_20261016.html.gz
+duterte,Rodrigo R. Duterte,Duterte,2016-06-30,2022-06-30,PDP-Laban,election,election,data/raw/wiki/list_of_presidents_of_the_philippines_20261016.html.gz
+marcos_jr,Ferdinand R. Marcos Jr.,Marcos Jr.,2022-06-30,,PFP,election,incumbent,data/raw/wiki/list_of_presidents_of_the_philippines_20261016.html.gz

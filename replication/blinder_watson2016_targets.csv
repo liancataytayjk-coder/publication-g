@@ -1,0 +1,25 @@
+source,sample,outcome,statistic,group,target,se_nw6,se_cluster,note
+NBER WP 20324 Table 1 panel A,1949Q2-2013Q1,real GDP growth (annualized q/q),mean,Democratic,4.35,0.46,0.57,first quarter of each term charged to predecessor; 7 D terms 112 quarters
+NBER WP 20324 Table 1 panel A,1949Q2-2013Q1,real GDP growth (annualized q/q),mean,Republican,2.54,0.45,0.33,9 R terms 144 quarters
+NBER WP 20324 Table 1 panel A,1949Q2-2013Q1,real GDP growth (annualized q/q),D-R gap,Difference,1.80,0.64,0.66,randomization p-value 0.01 (party labels assigned at random to the 16 four-year blocks)
+NBER WP 20324 Table 1 panel B,1949Q2-2013Q1,real GDP per capita growth,D-R gap,Difference,1.76,0.61,0.58,Dem 3.11 Rep 1.35; p 0.01
+NBER WP 20324 Table 4,1947Q2-2013Q1,real GDP growth deviation from constant trend,mean,Democratic,1.06,0.46,0.57,grand mean 3.29 over 1947Q2-2013Q1
+NBER WP 20324 Table 4,1947Q2-2013Q1,real GDP growth deviation from constant trend,mean,Republican,-0.74,0.45,0.33,
+NBER WP 20324 Table 6 line 1,1949Q2-2013Q1,D-R gap explained by Hamilton net oil price increase,explained,Difference,0.50,0.10,,total gap 1.80 (0.64); marginal R2 0.13; oil = PPI crude petroleum WPU0561; 12-quarter max; "6-lag benchmark"
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,Tr,0.87,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,KJ,0.84,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,Jo,0.79,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,Ca,-1.34,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,Cl1,0.65,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,Cl2,-0.24,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,Ob1,0.39,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,Ei1,0.52,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,Ei2,0.58,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,Ni,0.48,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,NF,-1.53,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,Re1,-0.28,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,Re2,0.84,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,BI,-0.45,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,BII1,0.32,,,
+NBER WP 20324 Table 7 line 1,1949Q2-2013Q1,effect of Hamilton oil shocks by term,term mean minus sample mean,BII2,-2.45,,,
+NBER WP 20324 Table 10A line 1,1949Q2-2012Q3,D-R gap explained jointly by oil + TFP + defense,explained,Difference,1.02,0.11,,total 1.87; oil 0.49 TFP 0.31 defense 0.22 (not in gate: Ramey defense shocks not public here)
