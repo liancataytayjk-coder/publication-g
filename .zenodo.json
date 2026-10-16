@@ -1,0 +1,27 @@
+{
+  "title": "Replication package for: Good policy or good luck? Philippine economic performance across presidential administrations",
+  "upload_type": "software",
+  "description": "Code, raw data and outputs that reproduce every number, table and figure in the article, including a replication of Blinder and Watson (2016) on US data. Run ./run_all.sh.",
+  "creators": [
+    {
+      "name": "Cataytay, Lian",
+      "affiliation": "University of Southeastern Philippines"
+    }
+  ],
+  "keywords": [
+    "Philippines",
+    "presidents",
+    "economic growth",
+    "luck",
+    "replication"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.1257/aer.20140913",
+      "relation": "isSupplementTo",
+      "scheme": "doi",
+      "resource_type": "publication-article"
+    }
+  ],
+  "license": "cc-by-4.0"
+}

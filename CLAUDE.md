@@ -143,7 +143,7 @@ AER version itself is blocked here (403); see Open questions.
 | D14 | 2026-10-16 | Shock lags 0–6 (current and six lags), by the gate's pre-set rule. | G3: lags 0–6 explain 0.481 and lags 1–6 0.479 of the target 0.50; 0–6 is closer. | pre-registered |
 | D12 | 2026-10-16 | Shock series fixed (completes D6): (i) oil: Hamilton net oil price increase on WPU0561; (ii) foreign demand: US real GDP growth (GDPC1), purged of Philippine feedback by taking the residual from a regression on 4 own lags and current + 4 lags of Philippine growth, as the reference does for Europe; robustness from 1995: the equal-weight average of US, Japan and euro-area growth, purged the same way; (iii) El Niño: max(0, ONI) averaged over the quarter; (iv) financial conditions: the Gilchrist–Zakrajšek excess bond premium, quarterly average, purged like (ii), available from 1973. | These are the long quarterly series that can be downloaded here. No quarterly GDP for Japan before 1994 or China before 2011 is reachable, so the main foreign-demand shock uses the United States, the largest export market for most of the sample. Fixed before any Philippine estimate. | pre-registered |
 
-| D15 | 2026-10-16 | Documents: target journal *Asian Economic Journal*; author block filled; every article is rendered in the user's house style (`lian-signature-style`: Times New Roman 12, double-spaced body, 1-inch margins on Letter, numbered sections, three-line tables with notes and source below, figures in Times New Roman, one table or figure per page at the end), through `paper/style/lian-article-reference.docx` and `scripts/style/docx_style.py finish`, with `check_style.py` run on every build. This supersedes the line in D11 that dropped the style. The AEJ author guide could not be read (Wiley returns 403), so journal-specific rules await the user's copy. | User reply, 2026-10-16; the style skill became available in this session. No estimate changes. | documents |
+| D15 | 2026-10-16 | Documents (AI-use statement approved; house style kept as the template; replication package to be deposited on Zenodo; no cover letter for now): target journal *Asian Economic Journal*; author block filled; every article is rendered in the user's house style (`lian-signature-style`: Times New Roman 12, double-spaced body, 1-inch margins on Letter, numbered sections, three-line tables with notes and source below, figures in Times New Roman, one table or figure per page at the end), through `paper/style/lian-article-reference.docx` and `scripts/style/docx_style.py finish`, with `check_style.py` run on every build. This supersedes the line in D11 that dropped the style. The AEJ author guide could not be read (Wiley returns 403), so journal-specific rules await the user's copy. | User reply, 2026-10-16; the style skill became available in this session. No estimate changes. | documents |
 
 ## Replication gate (pre-registered 2026-10-16, before any estimate)
 
@@ -307,6 +307,10 @@ Japan and euro-area growth (sample from 1997); (g) Vietnam added to the peers
 - `docs/statistical_annex_template.md` → `scripts/08_paper.py` →
   `docs/statistical_annex.md` / `.docx` / `.pdf` (every generated table).
 - `paper/SUBMISSION_CHECKLIST.md`: what remains before submission.
+- `scripts/09_replication_package.py` → `deliverables/phl-presidents-growth-replication.zip`
+  (replication package for Zenodo, with `README_REPLICATION.md`,
+  `requirements_lock.txt`, `.zenodo.json`, `CITATION.cff`; tested from a clean
+  unzip, outputs byte-identical).
 - `docs/session_handoff.Rmd`: how to resume in a new session.
 
 ## Pipeline
@@ -330,8 +334,8 @@ Estimator and helpers in `phadmin/`; simulation tests in `tests/` (11 pass).
 - [ ] Presidents' term dates come from a secondary source (Wikipedia, saved in
       `data/raw/wiki/`), because the Official Gazette blocks this container.
       The user should spot-check them against the Official Gazette.
-- [ ] The *Asian Economic Journal* author guide (Wiley blocks this container):
-      the user to upload it so its word limit, reference style and anonymity
-      rules can be applied.
-- [ ] Manuscript placeholders: AI-use statement wording, repository URL
-      (`paper/SUBMISSION_CHECKLIST.md`).
+- [ ] Optional: the *Asian Economic Journal* author guide, if journal-specific
+      rules are wanted later (the house style is the template for now, by the
+      author's decision of 2026-10-16).
+- [ ] Zenodo DOI: the author deposits the package with her own account; the DOI
+      then replaces `doi:[to be inserted on deposit]` in the manuscript template.

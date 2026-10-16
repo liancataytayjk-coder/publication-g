@@ -9,23 +9,28 @@ What remains before the manuscript can be submitted. The manuscript is
 - [x] **Author block:** Lian Cataytay, University of Southeastern Philippines,
       lrcataytay00745@usep.edu.ph (title page, with the affiliation in a footnote).
 - [x] **Target journal:** *Asian Economic Journal*.
-- [ ] **AEJ author guide:** the journal's pages on Wiley could not be opened from
-      the computing environment (403). Upload the guide (or paste its rules) so we
-      can apply its word limit, abstract length, reference style and any
-      anonymous-review rules. Until then the manuscript uses the house style
+- [x] **Template:** the house style is the template for now (author's decision,
+      2026-10-16). The AEJ author guide could not be opened from the computing
+      environment (403); if its rules are supplied later we will apply them. The
+      manuscript uses the house style
       (Times New Roman 12, double-spaced, 1-inch margins, author–date references,
       tables and figures one per page at the end): 26 pages, about 2,900 words of
       main text, a 233-word abstract, 8 tables and 6 figures.
 - [ ] **Anonymous copy:** if AEJ uses anonymous review, we will produce a copy
       without the author block and with self-identifying text removed.
-- [ ] **Use-of-AI statement:** the Declarations contain a draft, marked "[Author
-      to confirm against the journal's policy]"; finalize it against AEJ's policy.
-- [ ] **Repository URL** in the data and code statement (`[repository URL to be
-      inserted]`). If the repository stays private, deposit a replication package
-      (for example on Zenodo or openICPSR) and cite it.
+- [x] **Use-of-AI statement:** approved by the author (2026-10-16).
+- [x] **Replication package built and tested:** `deliverables/phl-presidents-growth-replication.zip`
+      (built by `scripts/09_replication_package.py`; a clean unzip, install and
+      `./run_all.sh` reproduces every table, figure and number byte for byte).
+- [ ] **Deposit on Zenodo** (author, with her own account): upload the zip at
+      zenodo.org → New upload; the metadata (title, author, affiliation, keywords,
+      licence CC BY 4.0, link to Blinder and Watson 2016) are in `.zenodo.json`.
+      Check the licence choice and the third-party data terms listed in the
+      package README before publishing. Then send us the DOI: it goes into the
+      Declarations (`doi:[to be inserted on deposit]`) and the package is rebuilt.
 - [ ] **Term dates:** spot-check `data/manual/administrations.csv` against the
       Official Gazette (it was not reachable from the computing environment).
-- [ ] **Cover letter** (not yet drafted).
+- [ ] **Cover letter:** not needed for now (author's decision).
 
 ## References
 

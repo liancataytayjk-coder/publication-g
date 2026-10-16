@@ -376,12 +376,12 @@ reliable differences between administrations.
 **Conflicts of interest.** None.
 
 **Data and code availability.** All data are public. The replication package
-(raw files, code and a one-command rebuild) is available at [repository URL to
-be inserted].
+(raw data files, code and a one-command rebuild of every number, table and
+figure) is deposited at Zenodo, doi:[to be inserted on deposit].
 
-**Use of AI tools.** [Author to confirm against the journal's policy:] The code,
-analysis and first draft were prepared with the assistance of Claude Code
-(Anthropic). The author checked all results and is responsible for the content.
+**Use of AI tools.** The code, analysis and first draft were prepared with the
+assistance of Claude Code (Anthropic). The author checked all results and is
+responsible for the content.
 
 # References {-}
 

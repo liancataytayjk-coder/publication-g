@@ -16,6 +16,7 @@ Status: complete draft. Data, replication gate (passed), estimation, figures and
 | `paper/manuscript.docx`, `.pdf` | The manuscript for the *Asian Economic Journal*, in the house style (rendered; edit `paper/manuscript_template.md`) |
 | `docs/statistical_annex.docx` | Every generated table |
 | `paper/SUBMISSION_CHECKLIST.md` | What remains before submission |
+| `scripts/09_replication_package.py` | Builds the Zenodo replication package in `deliverables/` (`.zenodo.json`, `CITATION.cff` hold its metadata) |
 | `docs/session_handoff.Rmd` | How to resume in a new session |
 | `output/tables/`, `output/figures/` | All estimates and figures, written by scripts |
 | `paper/references.bib` | References, each checked on Crossref |

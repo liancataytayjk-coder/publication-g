@@ -132,8 +132,10 @@ numbers: `CLAUDE.md` Results and `output/tables/`.
 
 # 8. Open items
 
-1. AEJ author guide (to apply journal-specific rules), AI-use wording,
-   repository URL, cover letter (see `paper/SUBMISSION_CHECKLIST.md`).
+1. The author deposits `deliverables/phl-presidents-growth-replication.zip`
+   (rebuild with `scripts/09_replication_package.py`) on Zenodo and sends the
+   DOI; insert it in the Declarations of `paper/manuscript_template.md`, re-run
+   `./run_all.sh` and the package script.
 2. Optional: AER PDF check of the targets; typhoon data; term-date spot-check.
 3. Optional further documents from the skill (working paper, analysis report,
    master document) if the user wants them.
