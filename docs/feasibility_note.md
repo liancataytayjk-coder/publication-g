@@ -57,11 +57,12 @@ inflation and unemployment be read on one scale.
 
 ## Data: what is available
 
-Quarterly real GDP for the Philippines from 1981Q1 to 2024Q3 is available from
-the IMF's International Financial Statistics, a copy of the official PSA series.
-The years after 2024Q3 must come from the Philippine Statistics Authority
-(PSA), whose website blocks this computer; we will ask you for that file or for
-wider network access. Annual GDP, GDP per person and inflation from 1960 to 2025,
+Quarterly real GDP for the Philippines from 1981Q1 to 2026Q2, at constant 2018
+prices, comes directly from the Philippine Statistics Authority (PSA) through
+its OpenSTAT data service. PSA also publishes its own seasonally adjusted
+series from 2000, which we use to check our seasonal adjustment, and annual GDP
+from 1946. The IMF's copy of the series agrees with PSA's and serves as a
+cross-check. Annual GDP, GDP per person and inflation from 1960 to 2025,
 for the Philippines and its peers, come from the World Bank. The oil price
 series the reference paper uses (the US producer price index for crude
 petroleum) runs from 1947 to 2026 on FRED, the St Louis Fed database. El Niño

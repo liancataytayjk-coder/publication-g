@@ -136,6 +136,9 @@ AER version itself is blocked here (403); see Open questions.
 | D7 | 2026-10-16 | Estimator: y_t = Σ_a α_a·A_{a,t} + Σ_k γ_k(L)e_kt + u_t, with A_{a,t} = 1 in administration a's charged quarters. Lags as settled by the gate (G3). The explained premium of administration a is the a-average of γ̂(L)e_t minus its full-sample average (reference footnote 19, Table 7). Standard errors: Newey–West with 6 lags. Test of "no differences": a circular-shift randomization test that slides the calendar of administrations along the growth series by every possible offset and recomputes the spread of administration means. | The direct generalization of the reference's equation (1) to K administrations. With only 8–9 administrations, standard errors are fragile; the shift test keeps each administration's length and the order of terms, as the reference's random relabelling of four-year blocks does. | pre-registered |
 | D8 | 2026-10-16 | Standardization for Objective 1 and RQ1: (i) per person (World Bank GDP per capita, constant 2015 US$); (ii) relative to peers: Philippine growth minus the average of Indonesia, Malaysia and Thailand (World Bank, annual); Vietnam added from 1985 as robustness; (iii) z-scores of each measure over 1961–2025, so growth, inflation and unemployment share one scale. | Peers face the same regional shocks (1997–98, 2009, 2020), so the peer gap removes much of the common luck without a model. | pre-registered |
 | D9 | 2026-10-16 | Replication gate on US data at the paper's own data vintage (ALFRED GDPC1, vintage 2014-07-01), criteria below. | The vintage is available, so the gate can be numeric, not qualitative. | pre-registered |
+| D10 | 2026-10-16 | Replaces the source in D3: the main outcome series is PSA's own quarterly GDP at constant 2018 prices, 1981Q1–2026Q2 (OpenSTAT `0952B5BQEQ1`). Our seasonal adjustment is checked against PSA's own seasonally adjusted GDP, 2000Q1–2026Q2 (`012B5BEXS1`), with the same pass rule (correlation of quarterly growth ≥ 0.90). The IMF series is kept as a cross-check only. | The OpenSTAT data API is reachable (only PSA's web pages sit behind a bot check). The long series equals PSA's current table over 2000–2026 exactly and the IMF copy to within 0.14 points of year-on-year growth, and it runs to 2026Q2 instead of 2024Q3. Changed before any estimate. | pre-registered |
+| D11 | 2026-10-16 | User confirmations: peers Indonesia, Malaysia and Thailand (Vietnam as robustness); quarterly 1981 onwards as the main sample; the incomplete Marcos Jr. term also compared at the same point in each term. The `lian-signature-style` skill is dropped; the empirical-econ-study style applies. | User reply, 2026-10-16. | pre-registered |
+| D12 | 2026-10-16 | Shock series fixed (completes D6): (i) oil: Hamilton net oil price increase on WPU0561; (ii) foreign demand: US real GDP growth (GDPC1), purged of Philippine feedback by taking the residual from a regression on 4 own lags and current + 4 lags of Philippine growth, as the reference does for Europe; robustness from 1995: the equal-weight average of US, Japan and euro-area growth, purged the same way; (iii) El Niño: max(0, ONI) averaged over the quarter; (iv) financial conditions: the Gilchrist–Zakrajšek excess bond premium, quarterly average, purged like (ii), available from 1973. | These are the long quarterly series that can be downloaded here. No quarterly GDP for Japan before 1994 or China before 2011 is reachable, so the main foreign-demand shock uses the United States, the largest export market for most of the sample. Fixed before any Philippine estimate. | pre-registered |
 
 ## Replication gate (pre-registered 2026-10-16, before any estimate)
 
@@ -184,23 +187,18 @@ None yet.
 
 ## Pipeline
 
-Not yet built. `./run_all.sh` will rebuild everything from `data/raw/`.
+Downloads: `scripts/01_download_{psa,fred,worldbank,other}.py` (Phase 2,
+2026-10-16). Cleaning, seasonal adjustment, the panel, the gate and estimation
+are not yet built. `./run_all.sh` will rebuild everything from `data/raw/`.
 
 ## Open questions
 
 - [ ] The AER version of the reference (2016) may update the sample or the
       numbers in the 2014 working paper. If the user can upload the AER PDF, the
       targets will be checked against it and any change logged.
-- [ ] Philippine quarterly GDP after 2024Q3: PSA OpenSTAT is blocked here. Can
-      the user download PSA's quarterly national accounts (constant 2018
-      prices, 1981 onwards if available), or widen network access to
-      `openstat.psa.gov.ph`?
 - [ ] Typhoon damage: is a long official series available (NDRRMC, PAGASA,
       EM-DAT with a login)? Without one, typhoons are not among the luck shocks.
 - [ ] Presidents' term dates come from a secondary source (Wikipedia, saved in
       `data/raw/wiki/`), because the Official Gazette blocks this container.
       The user should spot-check them against the Official Gazette.
 - [ ] Target journal: to be chosen by the user.
-- [ ] The `lian-signature-style` output skill is not available in this session
-      (not found in the skill list on 2026-10-16). The user to re-install or
-      paste its rules; until then the empirical-econ-study style guide applies.
