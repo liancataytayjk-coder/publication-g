@@ -44,8 +44,7 @@ Read `CLAUDE.md`, then this file. Follow the rules in section 3.
 | # | File | Why |
 |---|------|-----|
 | 1 | Blinder and Watson (2016) AER PDF (optional) | to check the targets taken from the 2014 working paper |
-| 2 | Target journal's author guidelines | format, word limit, AI policy |
-| 3 | Author name, affiliation, email | placeholders in the manuscript |
+| 2 | Asian Economic Journal author guidelines | Wiley blocks the container; word limit, references, anonymity, AI policy |
 | 4 | Any official typhoon-damage series (optional) | possible fifth luck shock |
 
 # 3. Standing rules
@@ -57,6 +56,10 @@ Read `CLAUDE.md`, then this file. Follow the rules in section 3.
 - Decisions log in `CLAUDE.md` for every choice, labelled pre-registered,
   supplementary or exploratory. The estimation plan is frozen (commit `5d860df`);
   anything new is supplementary or exploratory.
+- Documents in the house style (`lian-signature-style`): rendered through
+  `paper/style/lian-article-reference.docx` and `scripts/style/docx_style.py
+  finish`; `check_style.py` must report OK. Author: Lian Cataytay, University
+  of Southeastern Philippines. Target journal: Asian Economic Journal.
 - Writing style: as simple as possible; define every term (words, then formula,
   then example); paragraphs over bullets.
 - Neutral language about every president; show the luck-adjusted figure next to
@@ -129,8 +132,8 @@ numbers: `CLAUDE.md` Results and `output/tables/`.
 
 # 8. Open items
 
-1. Author details, target journal, AI-use wording, repository URL (see
-   `paper/SUBMISSION_CHECKLIST.md`).
+1. AEJ author guide (to apply journal-specific rules), AI-use wording,
+   repository URL, cover letter (see `paper/SUBMISSION_CHECKLIST.md`).
 2. Optional: AER PDF check of the targets; typhoon data; term-date spot-check.
 3. Optional further documents from the skill (working paper, analysis report,
    master document) if the user wants them.

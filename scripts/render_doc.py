@@ -20,7 +20,8 @@ import jinja2
 import pypandoc
 
 
-def render(template, out, numbers=None, bib=None, toc=False, resource_path=None, tables=None):
+def render(template, out, numbers=None, bib=None, toc=False, resource_path=None, tables=None,
+           reference_doc=None, number_sections=False, finish=False):
     template, out = Path(template), Path(out)
     n = json.loads(Path(numbers).read_text()) if numbers else {}
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(template.parent), undefined=jinja2.StrictUndefined,
@@ -33,7 +34,17 @@ def render(template, out, numbers=None, bib=None, toc=False, resource_path=None,
     if toc:
         args += ["--toc", "--toc-depth=2"]
     args.append(f"--resource-path={resource_path or out.parent}")
+    if reference_doc:
+        args.append(f"--reference-doc={reference_doc}")
+    if number_sections:
+        args.append("--number-sections")
+    args.append("--columns=10")  # always honour the relative column widths set in pipe tables
     pypandoc.convert_file(str(out), "docx", outputfile=str(out.with_suffix(".docx")), extra_args=args)
+    if finish:  # Lian signature style: Times New Roman, black, 1-inch margins, three-line tables
+        import subprocess
+        import sys
+        style = Path(__file__).resolve().parent / "style" / "docx_style.py"
+        subprocess.run([sys.executable, str(style), "finish", str(out.with_suffix(".docx"))], check=True)
     print("wrote", out, "and", out.with_suffix(".docx"))
 
 

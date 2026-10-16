@@ -14,4 +14,10 @@ $PY scripts/04_replicate.py
 for s in scripts/05_*.py scripts/06_*.py scripts/07_*.py scripts/08_*.py; do
   [ -e "$s" ] && $PY "$s"
 done
+# PDF copies in the house style (needs LibreOffice with the Math module; skipped if absent)
+if command -v soffice >/dev/null; then
+  $PY scripts/style/render.py paper/manuscript.docx --outdir paper
+  $PY scripts/style/render.py docs/statistical_annex.docx --outdir docs
+fi
+$PY scripts/style/check_style.py paper/manuscript.docx docs/statistical_annex.docx
 echo "done"

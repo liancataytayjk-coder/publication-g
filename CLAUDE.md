@@ -13,8 +13,9 @@ replicates the design of Blinder and Watson (2016, *American Economic Review*
 an econometric exploration", on Philippine data. Unit: the Philippines,
 quarterly 1981–2026 (main) and annual 1961–2025 (long view). Output: a journal
 manuscript (personal research), separate from the inflation-forecasting study in
-`publication-f`. Candidate journals (to be confirmed): *The Philippine Review of
-Economics*, *Asian Economic Journal*, *Journal of Asian Economics*. The user
+`publication-f`. Author: Lian Cataytay, University of Southeastern Philippines
+(lrcataytay00745@usep.edu.ph). Target journal: *Asian Economic Journal* (chosen
+by the user, 2026-10-16). The user
 chose the topic (the economy under different administrations, including the
 current one) on 2026-10-16 and delegated the reference paper.
 
@@ -141,6 +142,8 @@ AER version itself is blocked here (403); see Open questions.
 | D13 | 2026-10-16 | All GDP growth rates are quarterly growth at a compounded annual rate, 100·[(GDP_t/GDP_{t−1})⁴ − 1], replacing 400·Δln GDP in D3 and in the gate text. Log growth is kept as robustness. | The first gate run failed G1: both party means were 0.13 too low, which is the average compounding term g²/200. With the compounded rate the means, gap, overall mean and standard deviations match the paper to two decimals. Fixed before any Philippine estimate. | pre-registered (correction) |
 | D14 | 2026-10-16 | Shock lags 0–6 (current and six lags), by the gate's pre-set rule. | G3: lags 0–6 explain 0.481 and lags 1–6 0.479 of the target 0.50; 0–6 is closer. | pre-registered |
 | D12 | 2026-10-16 | Shock series fixed (completes D6): (i) oil: Hamilton net oil price increase on WPU0561; (ii) foreign demand: US real GDP growth (GDPC1), purged of Philippine feedback by taking the residual from a regression on 4 own lags and current + 4 lags of Philippine growth, as the reference does for Europe; robustness from 1995: the equal-weight average of US, Japan and euro-area growth, purged the same way; (iii) El Niño: max(0, ONI) averaged over the quarter; (iv) financial conditions: the Gilchrist–Zakrajšek excess bond premium, quarterly average, purged like (ii), available from 1973. | These are the long quarterly series that can be downloaded here. No quarterly GDP for Japan before 1994 or China before 2011 is reachable, so the main foreign-demand shock uses the United States, the largest export market for most of the sample. Fixed before any Philippine estimate. | pre-registered |
+
+| D15 | 2026-10-16 | Documents: target journal *Asian Economic Journal*; author block filled; every article is rendered in the user's house style (`lian-signature-style`: Times New Roman 12, double-spaced body, 1-inch margins on Letter, numbered sections, three-line tables with notes and source below, figures in Times New Roman, one table or figure per page at the end), through `paper/style/lian-article-reference.docx` and `scripts/style/docx_style.py finish`, with `check_style.py` run on every build. This supersedes the line in D11 that dropped the style. The AEJ author guide could not be read (Wiley returns 403), so journal-specific rules await the user's copy. | User reply, 2026-10-16; the style skill became available in this session. No estimate changes. | documents |
 
 ## Replication gate (pre-registered 2026-10-16, before any estimate)
 
@@ -299,9 +302,10 @@ Japan and euro-area growth (sample from 1997); (g) Vietnam added to the peers
 - `docs/feasibility_note.md`: what can and cannot be done, and with what data
   (Phase 1; written by hand before any result).
 - `paper/manuscript_template.md` → `scripts/08_paper.py` → `paper/manuscript.md`
-  / `.docx` (IMRAD journal manuscript; numbers in `output/tables/paper_numbers.json`).
+  / `.docx` / `.pdf` (IMRAD journal manuscript for the *Asian Economic Journal*,
+  house style; numbers in `output/tables/paper_numbers.json`).
 - `docs/statistical_annex_template.md` → `scripts/08_paper.py` →
-  `docs/statistical_annex.md` / `.docx` (every generated table).
+  `docs/statistical_annex.md` / `.docx` / `.pdf` (every generated table).
 - `paper/SUBMISSION_CHECKLIST.md`: what remains before submission.
 - `docs/session_handoff.Rmd`: how to resume in a new session.
 
@@ -311,7 +315,8 @@ Japan and euro-area growth (sample from 1997); (g) Vietnam added to the peers
 into `.tools/`, not committed) → `scripts/02_clean.py` (processed tables,
 seasonal adjustment) → `scripts/03_build_panel.py` → `scripts/04_replicate.py` (gate) →
 `scripts/05_estimate.py` (RQ1–RQ4, scorecard, robustness) → `scripts/06_figures.py`
-→ `scripts/08_paper.py` (manuscript and annex).
+→ `scripts/08_paper.py` (manuscript and annex, house style via `scripts/style/`) →
+PDF export (`scripts/style/render.py`, LibreOffice) → `check_style.py`.
 Estimator and helpers in `phadmin/`; simulation tests in `tests/` (11 pass).
 `./run_all.sh` rebuilds everything from `data/raw/`.
 
@@ -325,6 +330,8 @@ Estimator and helpers in `phadmin/`; simulation tests in `tests/` (11 pass).
 - [ ] Presidents' term dates come from a secondary source (Wikipedia, saved in
       `data/raw/wiki/`), because the Official Gazette blocks this container.
       The user should spot-check them against the Official Gazette.
-- [ ] Target journal: to be chosen by the user.
-- [ ] Manuscript placeholders: author block, AI-use statement, repository URL
+- [ ] The *Asian Economic Journal* author guide (Wiley blocks this container):
+      the user to upload it so its word limit, reference style and anonymity
+      rules can be applied.
+- [ ] Manuscript placeholders: AI-use statement wording, repository URL
       (`paper/SUBMISSION_CHECKLIST.md`).

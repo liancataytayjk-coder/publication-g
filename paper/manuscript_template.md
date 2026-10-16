@@ -1,36 +1,40 @@
 ---
 title: "Good policy or good luck? Philippine economic performance across presidential administrations"
-author: "[Author name], [Affiliation], [email]"
+author:
+  - "Lian Cataytay[^aff]"
 date: "Draft, {{ n.build_date }}"
+abstract: |
+  Does the Philippine economy grow faster under some presidents than
+  under others, and how much of the difference is luck? We replicate the design
+  of Blinder and Watson (2016) on Philippine data. We first reproduce their US
+  results on the paper's own data vintage (a 1.80-point growth gap between
+  parties; ours is {{ n.gate_gap }}). We then measure each administration's
+  *premium*, its average growth minus the 1981–2026 average, from quarterly data
+  on {{ n.n_q }} quarters. We split the premium into the part explained by shocks
+  no Philippine president controls (oil prices, demand from the United States, El
+  Niño and world financial conditions) and the rest. Three findings stand out.
+  First, the spread of administration premiums is no larger than chance would
+  produce (randomization p = {{ n.shift_raw }}); only the Aquino III premium
+  ({{ n.p_aquino_b }} points) survives a correction for multiple testing.
+  Second, measured against Indonesia, Malaysia and Thailand, the differences grow
+  rather than shrink: the Philippines lagged its neighbours before 1992 and has
+  outgrown them since 2011. Third, luck explains about half of the spread of
+  premiums ({{ n.S }}), as in the United States, but this share is fragile: it
+  falls to {{ n.S_ex_debt }} without the 1984–85 debt crisis. The current
+  administration's premium ({{ n.p_marcos_jr }}) is small and statistically
+  indistinguishable from zero, and its strong first year was largely predictable
+  from the rebound under way when it took office.
+
+  **Keywords:** presidents, economic growth, luck, Philippines, replication
+
+  **JEL codes:** E32, E60, O53
 ---
+
+[^aff]: University of Southeastern Philippines. E-mail: lrcataytay00745\@usep.edu.ph.
 
 <#-- Rendered by scripts/08_paper.py. Edit this template, never manuscript.md. --#>
 
-**Abstract.** Does the Philippine economy grow faster under some presidents than
-under others, and how much of the difference is luck? We replicate the design
-of @blinder2016presidents on Philippine data. We first reproduce their US
-results on the paper's own data vintage (a 1.80-point growth gap between
-parties; ours is {{ n.gate_gap }}). We then measure each administration's
-*premium*, its average growth minus the 1981–2026 average, from quarterly data
-on {{ n.n_q }} quarters. We split the premium into the part explained by shocks
-no Philippine president controls (oil prices, demand from the United States, El
-Niño and world financial conditions) and the rest. Three findings stand out.
-First, the spread of administration premiums is no larger than chance would
-produce (randomization p = {{ n.shift_raw }}); only the Aquino III premium
-({{ n.p_aquino_b }} points) survives a correction for multiple testing.
-Second, measured against Indonesia, Malaysia and Thailand, the differences grow
-rather than shrink: the Philippines lagged its neighbours before 1992 and has
-outgrown them since 2011. Third, luck explains about half of the spread of
-premiums ({{ n.S }}), as in the United States, but this share is fragile: it
-falls to {{ n.S_ex_debt }} without the 1984–85 debt crisis. The current
-administration's premium ({{ n.p_marcos_jr }}) is small and statistically
-indistinguishable from zero, and its strong first year was largely predictable
-from the rebound under way when it took office.
-
-**Keywords:** presidents; economic growth; luck; Philippines; replication.
-**JEL codes:** E32, E60, O53.
-
-# 1. Introduction
+# Introduction
 
 Every Philippine administration claims credit for growth, and every opposition
 blames the president for slowdowns. Both claims assume that presidents move the
@@ -67,9 +71,9 @@ Philippine estimate (Section 2.6). The study measures; it does not rank people.
 Every claim about an administration is tied to a number and its uncertainty,
 and the luck-adjusted figure is always shown next to the raw one.
 
-# 2. Data and methods
+# Data and methods
 
-## 2.1 Data
+## Data
 
 The main measure is quarterly real GDP growth. Real GDP is the value of
 everything the economy produces, at constant prices, so that inflation does not
@@ -81,7 +85,7 @@ PSA's own adjusted series over the years PSA publishes it (2000–2026).
 
 Growth is measured as in @blinder2016presidents, at a compounded annual rate:
 
-$$y_t = 100\left[\left(\frac{GDP_t}{GDP_{t-1}}\right)^4 - 1\right]. \qquad (1)$$
+$$y_t = 100\left[\left(\frac{GDP_t}{GDP_{t-1}}\right)^4 - 1\right]. \qquad\qquad (1)$$
 
 For example, if real GDP rises by 1% in a quarter, $y_t = 100(1.01^4 - 1)
 \approx 4.06$% a year. Over 1981Q2–{{ n.mj_last }}, growth averaged
@@ -94,7 +98,7 @@ term dates come from the official record as compiled on Wikipedia (the Official
 Gazette could not be reached from our computing environment). Every raw file,
 with its source and date, is listed in the replication package.
 
-## 2.2 Charging quarters to administrations
+## Charging quarters to administrations
 
 A new president cannot change the economy on inauguration day. Following
 @blinder2016presidents, who charge the first quarter of each term to the
@@ -110,12 +114,12 @@ years of Ferdinand E. Marcos (1981Q2–1986Q2), which we label "Marcos Sr.
 The Marcos Jr. administration enters with the {{ n.mj_quarters }} quarters
 observed so far (2022Q4–{{ n.mj_last }}).
 
-## 2.3 The administration premium
+## The administration premium
 
 An administration's **premium** is its average growth minus the average over
 the whole sample:
 
-$$P_a = \bar{y}_a - \bar{y}. \qquad (2)$$
+$$P_a = \bar{y}_a - \bar{y}. \qquad\qquad (2)$$
 
 If growth averaged 4.0% over the sample and 5.0% under one administration, its
 premium is +1.0 point. Standard errors, which measure how uncertain each
@@ -135,11 +139,11 @@ person** subtracts population growth. **Growth relative to peers** subtracts the
 average growth of Indonesia, Malaysia and Thailand in the same year; it removes
 shocks that hit the whole region at once.
 
-## 2.4 How much is luck?
+## How much is luck?
 
 We estimate the Philippine version of equation (1) in @blinder2016presidents:
 
-$$y_t = \sum_a \alpha_a A_{a,t} + \sum_k \sum_{j=0}^{6} \gamma_{kj}\, e_{k,t-j} + u_t, \qquad (3)$$
+$$y_t = \sum_a \alpha_a A_{a,t} + \sum_k \sum_{j=0}^{6} \gamma_{kj}\, e_{k,t-j} + u_t, \qquad\qquad (3)$$
 
 where $A_{a,t}$ equals 1 in the quarters charged to administration $a$, and
 $e_{k,t}$ is shock $k$, entered with its current value and six lags, because
@@ -170,12 +174,12 @@ period over which every shock and its lags exist.
 
 A single summary is the **share of the spread of premiums explained by luck**,
 
-$$S = 1 - \frac{\sum_a n_a U_a^2}{\sum_a n_a P_a^2}, \qquad (4)$$
+$$S = 1 - \frac{\sum_a n_a U_a^2}{\sum_a n_a P_a^2}, \qquad\qquad (4)$$
 
 where $U_a$ is the unexplained premium and $n_a$ the number of quarters. If luck
 explained every premium exactly, $S = 1$; if it explained none, $S = 0$.
 
-## 2.5 Inheritance and the same point in the term
+## Inheritance and the same point in the term
 
 Growth in a president's first year may simply continue, or rebound from, what
 was under way before. For each administration that starts inside the sample we
@@ -188,7 +192,7 @@ can rebound faster after a slump. The current term is incomplete, so we also
 compare every administration over its first {{ n.mj_quarters }} quarters, raw
 and after removing the fitted shock component.
 
-## 2.6 Validation and pre-specification
+## Validation and pre-specification
 
 Before touching Philippine data, we re-estimated the reference paper on US data
 at its own data vintage (Table 1). The pass criteria were written down first.
@@ -206,9 +210,9 @@ repository before the first Philippine estimate. All results below are from
 that plan unless labelled otherwise. The estimation code was also checked on
 simulated data with known answers.
 
-# 3. Results
+# Results
 
-## 3.1 Do administrations differ?
+## Do administrations differ?
 
 Figure 1 shows quarterly growth with the administrations marked, and Table 2
 the premiums. The largest negative premium belongs to the last five years of
@@ -250,7 +254,7 @@ themselves: they grew {{ n.peers_pre97 }}% a year on average before 1997 and
 the Philippines' record with its neighbours'. Even so, the shift test cannot reject
 equal premiums on this measure either (p = {{ n.shift_rel }}).
 
-## 3.2 How much is luck?
+## How much is luck?
 
 Table 4 and Figure 2 split each premium into its explained and unexplained
 parts. Jointly the shocks matter (p {{ n.wald_all }} for the test that all their
@@ -284,7 +288,7 @@ conditions ({{ n.j_marcos_jr_ebp }}, partly offset by oil, {{ n.j_marcos_jr_oil 
 leaving {{ n.j_marcos_jr_U }} unexplained. For Duterte the figures are
 {{ n.j_duterte_P }}, {{ n.j_duterte_E }} and {{ n.j_duterte_U }}.
 
-## 3.3 Is early growth inherited?
+## Is early growth inherited?
 
 Table 5 and Figure 4 compare first-year growth with what the two models
 predicted at the start of each term. The bounce-back model predicted strong
@@ -298,7 +302,7 @@ was already under way. Duterte's first year ({{ n.r3_duterte_act }}% against a
 forecast of {{ n.r3_duterte_bb }}%) and Ramos's ({{ n.r3_ramos_act }}% against
 {{ n.r3_ramos_bb }}%) beat the forecasts.
 
-## 3.4 The current administration in context
+## The current administration in context
 
 Table 6 and Figure 5 compare administrations over their first
 {{ n.mj_quarters }} quarters. Marcos Jr. averaged {{ n.r4_marcos_jr_raw }}% a
@@ -320,7 +324,7 @@ administration average on this series, which starts in 1991. A z-score expresses
 measure in "typical swings" from its long-run average: z = (administration mean
 − long-run mean) / standard deviation of the annual values.
 
-## 3.5 Robustness
+## Robustness
 
 Table 7 repeats the main statistics under every check that was specified in
 advance. The conclusion that differences are within chance holds throughout
@@ -330,7 +334,7 @@ the Marcos Jr. premium between {{ n.rob_marcos_jr_min }} and
 {{ n.rob_marcos_jr_max }}. The luck share is the fragile result, as discussed in
 Section 3.2.
 
-# 4. Discussion
+# Discussion
 
 **Findings.** Philippine growth has differed across administrations by less than
 headline debates suggest. With one exception, the differences are within what
@@ -365,21 +369,30 @@ incomplete.
 is mostly a story of shared fortunes and wide uncertainty, not of large and
 reliable differences between administrations.
 
-# Declarations
+# Declarations {-}
 
-**Funding:** none (personal research). **Conflicts of interest:** none.
-**Data and code availability:** all data are public; the replication package
+**Funding.** None; this is personal research.
+
+**Conflicts of interest.** None.
+
+**Data and code availability.** All data are public. The replication package
 (raw files, code and a one-command rebuild) is available at [repository URL to
-be inserted]. **Use of AI tools:** [author to complete; the code, analysis and
-draft were prepared with the assistance of Claude Code (Anthropic), and all
-results were checked by the author.]
+be inserted].
 
-# References
+**Use of AI tools.** [Author to confirm against the journal's policy:] The code,
+analysis and first draft were prepared with the assistance of Claude Code
+(Anthropic). The author checked all results and is responsible for the content.
+
+# References {-}
 
 ::: {#refs}
 :::
 
-# Tables
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+# Tables {-}
 
 {{ t.gate }}
 
@@ -397,16 +410,40 @@ results were checked by the author.]
 
 {{ t.score }}
 
-# Figures
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+# Figures {-}
 
 ![Figure 1. Quarterly real GDP growth, 1981Q2–{{ n.mj_last }}, at a compounded annual rate (percent). Shading marks alternating administrations, with quarters charged after a one-quarter lag. The dashed line is the sample mean. The 2020Q2 value is cut at −30 for readability.](fig1_growth_by_admin.png){width=100%}
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
 ![Figure 2. Each administration's premium (average growth minus the sample mean, percentage points), the part explained by the four luck shocks (with a 95% confidence interval) and the unexplained rest, joint model {{ n.joint_sample }}.](fig2_premiums_luck.png){width=100%}
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 ![Figure 3. Annual premiums, 1962–2025: Philippine growth (white) and Philippine growth minus the average of Indonesia, Malaysia and Thailand (grey), percentage points.](fig3_peers.png){width=100%}
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
 ![Figure 4. Growth over each administration's first four quarters (bars) against forecasts made in the quarter before it took office: an autoregression (circles) and a bounce-back model (squares). The dashed line is the sample mean.](fig4_inheritance.png){width=100%}
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
 ![Figure 5. Average growth over each administration's first {{ n.mj_quarters }} quarters, raw (filled circles) and after removing the fitted luck component (open squares), percent at an annual rate.](fig5_same_point.png){width=90%}
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 ![Figure 6. Replication: the effect of oil shocks on average growth in each US presidential term, from Table 7 of Blinder and Watson (horizontal axis) and from this study (vertical axis). The dotted line is the 45-degree line.](fig6_replication.png){width=55%}

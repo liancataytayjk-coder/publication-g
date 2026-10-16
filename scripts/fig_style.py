@@ -27,7 +27,7 @@ C = dict(color=DARK, linestyle=":", marker="^", markersize=3.5, markerfacecolor=
 
 def setup():
     plt.rcParams.update({
-        "font.family": "DejaVu Serif", "font.size": 9, "axes.edgecolor": BLACK, "axes.labelcolor": BLACK,
+        "font.family": "serif", "font.serif": ["Times New Roman", "Liberation Serif", "DejaVu Serif"], "font.size": 9, "axes.edgecolor": BLACK, "axes.labelcolor": BLACK,
         "xtick.color": BLACK, "ytick.color": BLACK, "axes.spines.top": False, "axes.spines.right": False,
         "axes.grid": False, "legend.frameon": False, "figure.dpi": 100, "hatch.linewidth": 0.6,
         "lines.linewidth": 1.4,

@@ -7,6 +7,7 @@ computed here from the numbers with the rules pre-registered in CLAUDE.md.
 """
 import datetime as dt
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -20,8 +21,19 @@ TAB = Path("output/tables")
 ADM = pd.read_csv("data/manual/administrations.csv").set_index("admin_id")
 NAME = ADM["short"].to_dict()
 ORDER = ["macapagal", "marcos_sr", "aquino_c", "ramos", "estrada", "arroyo", "aquino_b", "duterte", "marcos_jr"]
-f2 = lambda x: f"{x:.2f}"  # noqa: E731
-sgn = lambda x: f"{x:+.2f}"  # noqa: E731
+MINUS = "\u2212"  # true minus sign (journal style)
+f2 = lambda x: f"{x:.2f}".replace("-", MINUS)  # noqa: E731
+sgn = lambda x: f"{x:+.2f}".replace("-", MINUS)  # noqa: E731
+SOURCE = ("Author's calculations from Philippine Statistics Authority, World Bank, FRED/ALFRED, NOAA and "
+          "Federal Reserve Board data.")
+
+
+PAGEBREAK = '```{=openxml}\n<w:p><w:r><w:br w:type="page"/></w:r></w:p>\n```'
+
+
+def dash(s):
+    """En dash between quarters or years, e.g. 1983Q4-2026Q2 -> 1983Q4–2026Q2."""
+    return re.sub(r"(\d)-(\d)", "\\1–\\2", s)
 
 
 def p_fmt(p):
@@ -32,13 +44,27 @@ def stars(p):
     return "" if pd.isna(p) else "\\*\\*\\*" if p < 0.01 else "\\*\\*" if p < 0.05 else "\\*" if p < 0.10 else ""
 
 
-def md_table(df, caption, note=None):
+def md_table(df, caption, note=None, source=SOURCE, newpage=True):
+    """Pandoc pipe table: title above (Table Caption), first column left, the rest right-aligned,
+    notes and source below in the 'Table Note' style."""
     cols = list(df.columns)
-    out = ["", f"**{caption}**", "", "| " + " | ".join(cols) + " |", "|" + "|".join(["---"] * len(cols)) + "|"]
+    num = re.compile(r"^[\s\d.+\u2212()*\\<>=,%-]*$")
+    align = []
+    for i, c in enumerate(cols):
+        cells = [str(v) for v in df[c]]
+        # relative column width for pandoc: the longest cell or the longest header word, plus padding
+        width = max([round(len(x) * (1.15 if "Q" in x else 1)) for x in cells]   # quarter labels are wide
+                    + [round(len(w) * 1.3) for w in c.split()] + [-(-len(c) // 2), 6]) + 4
+        left = i == 0 or not all(num.match(x) for x in cells)
+        align.append((":" + "-" * width) if left else ("-" * width + ":"))
+    out = ([PAGEBREAK] if newpage else []) + ["", "| " + " | ".join(cols) + " |", "|" + "|".join(align) + "|"]
     out += ["| " + " | ".join(str(v) for v in r) + " |" for r in df.itertuples(index=False)]
-    out.append("")
+    out += ["", f"Table: {caption}", "", '::: {custom-style="Table Note"}']
     if note:
-        out += [f"*Note.* {note}", ""]
+        out += [f"*Notes:* {note}", ""]
+    if source:
+        out += [f"*Source:* {source}"]
+    out += [":::", ""]
     return "\n".join(out)
 
 
@@ -65,11 +91,17 @@ def build():
              gate_signs=int(gv("terms with")))
     gt = g[g.criterion.isin(["G1", "G2", "G3", "G4"])].copy()
     gt["pass"] = gt["pass"].map({True: "yes", False: "no"})
+    gt["statistic"] = gt["statistic"].map(lambda x: dash(x).replace("D-R", "D–R").replace("Newey-West", "Newey–West"))
+    fmt_t = lambda v: v if str(v).startswith(">=") else (f"{float(v):.2f}")  # noqa: E731
+    gt["target"] = gt["target"].map(lambda v: fmt_t(v).replace(">=", "≥ "))
+    gt["estimate"] = [f"{int(v)}" if "same sign" in st else f"{v:.3f}" for v, st in zip(gt["estimate"], gt["statistic"])]
     t["gate"] = md_table(gt.rename(columns={"criterion": "Criterion", "statistic": "Statistic", "target": "Paper",
                                             "estimate": "This study", "pass_range": "Pass range", "pass": "Pass"}),
                          "Table 1. Replication of Blinder and Watson (2016) on US data, 1949Q2–2013Q1",
                          "Pass ranges were fixed before the gate was run. Growth is quarterly real GDP growth at a "
-                         "compounded annual rate, ALFRED vintage of 1 July 2014.")
+                         "compounded annual rate, ALFRED vintage of 1 July 2014.",
+                         source="Blinder and Watson (2014, Tables 1, 6 and 7); author's calculations from ALFRED and BLS data.",
+                         newpage=False)
 
     # ---- RQ1 -------------------------------------------------------------------------------
     for a, r in raw.iterrows():
@@ -79,7 +111,7 @@ def build():
     rows = []
     for a in [x for x in ORDER if x in raw.index]:
         lab = NAME[a] + (" (1981–86)" if a == "marcos_sr" else "")
-        rows.append([lab, f"{cal.loc[a, 'first']}–{cal.loc[a, 'last']}", int(raw.loc[a, "n"]), f2(raw.loc[a, "mean"]),
+        rows.append([lab, f"{cal.loc[a, 'first']}–{cal.loc[a, 'last']} ({int(raw.loc[a, 'n'])})", f2(raw.loc[a, "mean"]),
                      f"{sgn(raw.loc[a, 'premium'])}{stars(raw.loc[a, 'p'])} ({f2(raw.loc[a, 'se'])})", p_fmt(raw.loc[a, "p_holm"]),
                      f"{sgn(pc.loc[a, 'premium'])}{stars(pc.loc[a, 'p'])} ({f2(pc.loc[a, 'se'])})"])
     tests = pd.read_csv(TAB / "rq1_tests.csv")
@@ -90,7 +122,7 @@ def build():
              disp_raw_a=f2(td("annual PSA")), disp_rel=f2(td("relative to IDN-MYS-THA (")))
     n["h1a"] = "supported" if tp("quarterly raw") < 0.05 else "not supported"
     n["h1b"] = "supported" if td("dispersion ratio") < 0.5 else "not supported"
-    t["rq1"] = md_table(pd.DataFrame(rows, columns=["Administration", "Quarters charged", "n", "Mean growth",
+    t["rq1"] = md_table(pd.DataFrame(rows, columns=["Administration", "Quarters charged (n)", "Mean growth",
                                                     "Premium (s.e.)", "Holm p", "Per-person premium (s.e.)"]),
                         "Table 2. Administration premiums in quarterly real GDP growth, 1981Q2–" + n["mj_last"],
                         f"Growth at a compounded annual rate, percent; premium = administration mean minus the sample "
@@ -120,7 +152,7 @@ def build():
     j = pd.read_csv(TAB / "rq2_joint.csv").set_index("admin")
     sm = pd.read_csv(TAB / "rq2_summary.csv").set_index("item")["value"]
     sv = lambda k: float(sm[k])  # noqa: E731
-    n.update(S=f2(sv("share of premium dispersion explained by luck, S")), joint_sample=sm["joint sample"],
+    n.update(S=f2(sv("share of premium dispersion explained by luck, S")), joint_sample=dash(sm["joint sample"]),
              joint_n=int(float(sm["quarters"])), wald_all=p_fmt(sv("Wald test all shock lags = 0, p")),
              wald_oil=p_fmt(sv("Wald test oil lags = 0, p")), wald_us=p_fmt(sv("Wald test us lags = 0, p")),
              wald_elnino=p_fmt(sv("Wald test elnino lags = 0, p")), wald_ebp=p_fmt(sv("Wald test ebp lags = 0, p")),
@@ -132,14 +164,15 @@ def build():
     for a, r in j.iterrows():
         n[f"j_{a}_P"], n[f"j_{a}_E"], n[f"j_{a}_Ese"], n[f"j_{a}_U"] = sgn(r.premium), sgn(r.explained), f2(r.explained_se), sgn(r.unexplained)
         n[f"j_{a}_us"], n[f"j_{a}_oil"], n[f"j_{a}_ebp"] = sgn(r.explained_us), sgn(r.explained_oil), sgn(r.explained_ebp)
-    rows = [[NAME[a] + (" (1983–86)" if a == "marcos_sr" else ""), int(j.loc[a, "n"]), sgn(j.loc[a, "premium"]),
+    rows = [[NAME[a] + (" (1983–86)" if a == "marcos_sr" else ""), sgn(j.loc[a, "premium"]),
              f"{sgn(j.loc[a, 'explained'])} ({f2(j.loc[a, 'explained_se'])})", sgn(j.loc[a, "unexplained"]),
              sgn(j.loc[a, "explained_oil"]), sgn(j.loc[a, "explained_us"]), sgn(j.loc[a, "explained_elnino"]),
              sgn(j.loc[a, "explained_ebp"])] for a in j.index]
-    t["rq2"] = md_table(pd.DataFrame(rows, columns=["Administration", "n", "Premium", "Explained (s.e.)", "Unexplained",
+    t["rq2"] = md_table(pd.DataFrame(rows, columns=["Administration", "Premium", "Explained (s.e.)", "Unexplained",
                                                     "Oil", "US demand", "El Niño", "Financial"]),
                         f"Table 4. How much of each premium is luck? Joint shock model, {n['joint_sample']}",
-                        f"Percentage points. Explained = the administration's average of the fitted shock component minus "
+                        f"Percentage points. Quarters as in Table 2 from {n['joint_sample'].split('–')[0]} (Marcos Sr.: 11). "
+                        f"Explained = the administration's average of the fitted shock component minus "
                         f"its sample average; the last four columns split it by shock. Each shock enters with lags 0–6. "
                         f"Share of the dispersion of premiums explained, S = {n['S']}. Wald tests that a shock's lags are "
                         f"all zero: oil p = {n['wald_oil']}, US demand p = {n['wald_us']}, El Niño p = {n['wald_elnino']}, "
@@ -157,11 +190,11 @@ def build():
         r = rob[rob.admin == a]["premium_raw"]
         n[f"rob_{a}_min"], n[f"rob_{a}_max"] = f2(r.min()), f2(r.max())
     piv = rob.pivot_table(index="spec", columns="admin", values="premium_raw", sort=False)
-    rows = [[s[0].upper() + s[1:], f2(specs.loc[s, "shift_p"]), f2(specs.loc[s, "S"]), sgn(piv.loc[s, "aquino_b"]), sgn(piv.loc[s, "marcos_jr"])]
+    rows = [[dash(s[0].upper() + s[1:]), f2(specs.loc[s, "shift_p"]), f2(specs.loc[s, "S"]), sgn(piv.loc[s, "aquino_b"]), sgn(piv.loc[s, "marcos_jr"])]
             for s in specs.index]
     t["rob"] = md_table(pd.DataFrame(rows, columns=["Specification", "Shift-test p", "Luck share S",
                                                     "Aquino III premium", "Marcos Jr. premium"]),
-                        "Table 7. Robustness", "All checks were specified before estimation. Premiums are raw quarterly "
+                        "Table 7. Robustness checks", "All checks were specified before estimation. Premiums are raw quarterly "
                         "premiums (percentage points).")
 
     # ---- RQ3 -------------------------------------------------------------------------------
@@ -195,10 +228,10 @@ def build():
         da = "" if a == "marcos_jr" else f"{sgn(r.luck_adjusted_mj_minus_this)} ({f2(r.luck_adjusted_se)})"
         rows.append([NAME[a], f"{r['first']}–{r['last']}", f2(r.raw_mean), d, f2(r.luck_adjusted_mean), da])
     t["rq4"] = md_table(pd.DataFrame(rows, columns=["Administration", "First 15 quarters", "Raw mean",
-                                                    "Marcos Jr. minus this (s.e.)", "Luck-adjusted mean",
-                                                    "Marcos Jr. minus this (s.e.)"]),
+                                                    "Difference (s.e.)", "Luck-adjusted mean",
+                                                    "Difference  (s.e.)"]),
                         "Table 6. The same point in the term: the first 15 quarters",
-                        "Percent, annual rate. Luck-adjusted growth removes the fitted shock component of the joint model. "
+                        "Percent, annual rate. Difference = Marcos Jr. minus the administration in the row. Luck-adjusted growth removes the fitted shock component of the joint model. "
                         "Estrada (10 quarters) and Marcos Sr. (first quarters outside the sample) are not compared. "
                         "Newey–West standard errors; the luck-adjusted ones ignore the estimation error of the shock component.")
 
@@ -224,7 +257,8 @@ def build():
 if __name__ == "__main__":
     n, t = build()
     (TAB / "paper_numbers.json").write_text(json.dumps(n, indent=1, ensure_ascii=False))
+    style = dict(reference_doc="paper/style/lian-article-reference.docx", finish=True)
     render("paper/manuscript_template.md", "paper/manuscript.md", numbers=TAB / "paper_numbers.json",
-           bib="paper/references.bib", resource_path="paper:output/figures", tables=t)
+           bib="paper/references.bib", resource_path="paper:output/figures", tables=t, number_sections=True, **style)
     render("docs/statistical_annex_template.md", "docs/statistical_annex.md", numbers=TAB / "paper_numbers.json",
-           resource_path="docs:output/figures", tables=t)
+           resource_path="docs:output/figures", tables={k: v.replace(PAGEBREAK, "") for k, v in t.items()}, **style)

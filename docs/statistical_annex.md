@@ -13,90 +13,108 @@ in `output/tables/` listed at the end.
 # A. Validation
 
 
-**Table 1. Replication of Blinder and Watson (2016) on US data, 1949Q2–2013Q1**
-
 | Criterion | Statistic | Paper | This study | Pass range | Pass |
-|---|---|---|---|---|---|
+|:----------------|:------------------------------------------------|:----------|----------:|:----------------|:----------|
 | G1 | D mean growth | 4.35 | 4.346 | [4.25, 4.45] | yes |
 | G1 | R mean growth | 2.54 | 2.543 | [2.44, 2.64] | yes |
-| G1 | D-R gap | 1.8 | 1.803 | [1.7, 1.9] | yes |
-| G2 | Newey-West (6) s.e. of gap | 0.64 | 0.637 | [0.54, 0.74] | yes |
+| G1 | D–R gap | 1.80 | 1.803 | [1.7, 1.9] | yes |
+| G2 | Newey–West (6) s.e. of gap | 0.64 | 0.637 | [0.54, 0.74] | yes |
 | G2 | randomization p-value (16 blocks) | 0.01 | 0.011 | [0.0, 0.03] | yes |
-| G3 | oil-explained gap, adopted reading: lags 0-6 | 0.5 | 0.481 | [0.4, 0.6] | yes |
-| G4 | corr. of term oil effects with Table 7 | >=0.90 | 0.996 | [0.9, 1.0] | yes |
-| G4 | terms with the same sign (of 16) | >=14 | 16.0 | [14, 16] | yes |
+| G3 | oil-explained gap, adopted reading: lags 0–6 | 0.50 | 0.481 | [0.4, 0.6] | yes |
+| G4 | corr. of term oil effects with Table 7 | ≥ 0.90 | 0.996 | [0.9, 1.0] | yes |
+| G4 | terms with the same sign (of 16) | ≥ 14 | 16 | [14, 16] | yes |
 
-*Note.* Pass ranges were fixed before the gate was run. Growth is quarterly real GDP growth at a compounded annual rate, ALFRED vintage of 1 July 2014.
+Table: Table 1. Replication of Blinder and Watson (2016) on US data, 1949Q2–2013Q1
+
+::: {custom-style="Table Note"}
+*Notes:* Pass ranges were fixed before the gate was run. Growth is quarterly real GDP growth at a compounded annual rate, ALFRED vintage of 1 July 2014.
+
+*Source:* Blinder and Watson (2014, Tables 1, 6 and 7); author's calculations from ALFRED and BLS data.
+:::
 
 
 # B. The facts (RQ1)
 
 
-**Table 2. Administration premiums in quarterly real GDP growth, 1981Q2–2026Q2**
 
-| Administration | Quarters charged | n | Mean growth | Premium (s.e.) | Holm p | Per-person premium (s.e.) |
-|---|---|---|---|---|---|---|
-| Marcos Sr. (1981–86) | 1981Q2–1986Q2 | 21 | -0.20 | -4.22\* (2.26) | 0.44 | -5.03\*\* (2.30) |
-| C. Aquino | 1986Q3–1992Q3 | 25 | 3.25 | -0.77 (1.38) | 1.00 | -1.35 (1.37) |
-| Ramos | 1992Q4–1998Q3 | 24 | 3.78 | -0.24 (0.93) | 1.00 | -0.60 (0.98) |
-| Estrada | 1998Q4–2001Q1 | 10 | 3.48 | -0.54 (0.83) | 1.00 | -1.03 (0.86) |
-| Arroyo | 2001Q2–2010Q3 | 38 | 5.09 | +1.07 (0.70) | 0.76 | +1.13 (0.76) |
-| Aquino III | 2010Q4–2016Q3 | 24 | 6.24 | +2.22\*\*\* (0.72) | 0.02 | +2.43\*\*\* (0.79) |
-| Duterte | 2016Q4–2022Q3 | 24 | 4.72 | +0.70 (1.84) | 1.00 | +1.54 (1.87) |
-| Marcos Jr. | 2022Q4–2026Q2 | 15 | 4.59 | +0.56 (0.90) | 1.00 | +1.99\*\* (0.88) |
+| Administration | Quarters charged (n) | Mean growth | Premium (s.e.) | Holm p | Per-person premium (s.e.) |
+|:------------------------|:-------------------------|------------:|----------------------:|----------:|----------------------:|
+| Marcos Sr. (1981–86) | 1981Q2–1986Q2 (21) | −0.20 | −4.22\* (2.26) | 0.44 | −5.03\*\* (2.30) |
+| C. Aquino | 1986Q3–1992Q3 (25) | 3.25 | −0.77 (1.38) | 1.00 | −1.35 (1.37) |
+| Ramos | 1992Q4–1998Q3 (24) | 3.78 | −0.24 (0.93) | 1.00 | −0.60 (0.98) |
+| Estrada | 1998Q4–2001Q1 (10) | 3.48 | −0.54 (0.83) | 1.00 | −1.03 (0.86) |
+| Arroyo | 2001Q2–2010Q3 (38) | 5.09 | +1.07 (0.70) | 0.76 | +1.13 (0.76) |
+| Aquino III | 2010Q4–2016Q3 (24) | 6.24 | +2.22\*\*\* (0.72) | 0.02 | +2.43\*\*\* (0.79) |
+| Duterte | 2016Q4–2022Q3 (24) | 4.72 | +0.70 (1.84) | 1.00 | +1.54 (1.87) |
+| Marcos Jr. | 2022Q4–2026Q2 (15) | 4.59 | +0.56 (0.90) | 1.00 | +1.99\*\* (0.88) |
 
-*Note.* Growth at a compounded annual rate, percent; premium = administration mean minus the sample mean (4.02%). Newey–West standard errors (6 lags) in parentheses. \* p < 0.10, \*\* p < 0.05, \*\*\* p < 0.01 (unadjusted). Holm p corrects for the eight tests. Circular-shift test of no differences: p = 0.44 (raw), 0.28 (per person).
+Table: Table 2. Administration premiums in quarterly real GDP growth, 1981Q2–2026Q2
+
+::: {custom-style="Table Note"}
+*Notes:* Growth at a compounded annual rate, percent; premium = administration mean minus the sample mean (4.02%). Newey–West standard errors (6 lags) in parentheses. \* p < 0.10, \*\* p < 0.05, \*\*\* p < 0.01 (unadjusted). Holm p corrects for the eight tests. Circular-shift test of no differences: p = 0.44 (raw), 0.28 (per person).
+
+*Source:* Author's calculations from Philippine Statistics Authority, World Bank, FRED/ALFRED, NOAA and Federal Reserve Board data.
+:::
 
 
 
-**Table 3. Annual premiums, raw and relative to regional peers, 1962–2025**
 
 | Administration | Years | Premium, PSA growth | Premium relative to IDN–MYS–THA | Relative to IDN–MYS–THA–VNM |
-|---|---|---|---|---|
+|:----------------------|----------:|--------------:|--------------------:|------------------------:|
 | Macapagal | 4 | +0.86 | +1.25 |  |
-| Marcos Sr. | 20 | -0.46 | -1.73 | -8.25 |
-| C. Aquino | 7 | -0.84 | -3.26 | -2.82 |
-| Ramos | 6 | -0.63 | +0.40 | -0.71 |
-| Estrada | 2 | -0.37 | +0.14 | -0.21 |
+| Marcos Sr. | 20 | −0.46 | −1.73 | −8.25 |
+| C. Aquino | 7 | −0.84 | −3.26 | −2.82 |
+| Ramos | 6 | −0.63 | +0.40 | −0.71 |
+| Estrada | 2 | −0.37 | +0.14 | −0.21 |
 | Arroyo | 10 | +0.55 | +1.23 | +0.64 |
 | Aquino III | 6 | +1.87 | +2.90 | +2.33 |
-| Duterte | 6 | -0.55 | +2.16 | +1.26 |
+| Duterte | 6 | −0.55 | +2.16 | +1.26 |
 | Marcos Jr. | 3 | +0.92 | +2.37 | +1.57 |
 
-*Note.* Percentage points. Years charged to the administration in office for most of the year after a one-quarter lag. Dispersion of premiums: 0.82 (raw), 1.99 (relative). Shift-test p: 1.00 (raw), 0.77 (relative). Vietnam data start in 1985, so the last column covers only 1985 for Marcos Sr.
+Table: Table 3. Annual premiums, raw and relative to regional peers, 1962–2025
+
+::: {custom-style="Table Note"}
+*Notes:* Percentage points. Years charged to the administration in office for most of the year after a one-quarter lag. Dispersion of premiums: 0.82 (raw), 1.99 (relative). Shift-test p: 1.00 (raw), 0.77 (relative). Vietnam data start in 1985, so the last column covers only 1985 for Marcos Sr.
+
+*Source:* Author's calculations from Philippine Statistics Authority, World Bank, FRED/ALFRED, NOAA and Federal Reserve Board data.
+:::
 
 
 # C. Luck (RQ2)
 
 
-**Table 4. How much of each premium is luck? Joint shock model, 1983Q4-2026Q2**
 
-| Administration | n | Premium | Explained (s.e.) | Unexplained | Oil | US demand | El Niño | Financial |
-|---|---|---|---|---|---|---|---|---|
-| Marcos Sr. (1983–86) | 11 | -6.97 | -2.03 (1.63) | -4.95 | +0.59 | -2.67 | +0.04 | +0.00 |
-| C. Aquino | 25 | -0.85 | -0.22 (0.48) | -0.62 | -0.06 | +0.32 | -0.13 | -0.36 |
-| Ramos | 24 | -0.32 | +0.29 (0.24) | -0.61 | +0.28 | -0.45 | -0.10 | +0.56 |
-| Estrada | 10 | -0.61 | -1.90 (1.17) | +1.29 | +0.32 | -1.03 | -0.05 | -1.15 |
-| Arroyo | 38 | +1.00 | -0.02 (0.62) | +1.02 | -0.76 | +0.90 | +0.18 | -0.35 |
-| Aquino III | 24 | +2.14 | +1.04 (0.78) | +1.10 | +0.54 | +0.32 | -0.01 | +0.19 |
-| Duterte | 24 | +0.63 | +0.45 (0.29) | +0.17 | +0.11 | +0.01 | -0.07 | +0.40 |
-| Marcos Jr. | 15 | +0.49 | +0.33 (0.24) | +0.16 | -0.13 | +0.03 | +0.04 | +0.40 |
+| Administration | Premium | Explained (s.e.) | Unexplained | Oil | US demand | El Niño | Financial |
+|:------------------------|-------------:|----------------:|------------------:|----------:|------------:|----------:|----------------:|
+| Marcos Sr. (1983–86) | −6.97 | −2.03 (1.63) | −4.95 | +0.59 | −2.67 | +0.04 | +0.00 |
+| C. Aquino | −0.85 | −0.22 (0.48) | −0.62 | −0.06 | +0.32 | −0.13 | −0.36 |
+| Ramos | −0.32 | +0.29 (0.24) | −0.61 | +0.28 | −0.45 | −0.10 | +0.56 |
+| Estrada | −0.61 | −1.90 (1.17) | +1.29 | +0.32 | −1.03 | −0.05 | −1.15 |
+| Arroyo | +1.00 | −0.02 (0.62) | +1.02 | −0.76 | +0.90 | +0.18 | −0.35 |
+| Aquino III | +2.14 | +1.04 (0.78) | +1.10 | +0.54 | +0.32 | −0.01 | +0.19 |
+| Duterte | +0.63 | +0.45 (0.29) | +0.17 | +0.11 | +0.01 | −0.07 | +0.40 |
+| Marcos Jr. | +0.49 | +0.33 (0.24) | +0.16 | −0.13 | +0.03 | +0.04 | +0.40 |
 
-*Note.* Percentage points. Explained = the administration's average of the fitted shock component minus its sample average; the last four columns split it by shock. Each shock enters with lags 0–6. Share of the dispersion of premiums explained, S = 0.48. Wald tests that a shock's lags are all zero: oil p = 0.09, US demand p = 0.53, El Niño p = 0.84, financial conditions p = 0.005.
+Table: Table 4. How much of each premium is luck? Joint shock model, 1983Q4–2026Q2
+
+::: {custom-style="Table Note"}
+*Notes:* Percentage points. Quarters as in Table 2 from 1983Q4 (Marcos Sr.: 11). Explained = the administration's average of the fitted shock component minus its sample average; the last four columns split it by shock. Each shock enters with lags 0–6. Share of the dispersion of premiums explained, S = 0.48. Wald tests that a shock's lags are all zero: oil p = 0.09, US demand p = 0.53, El Niño p = 0.84, financial conditions p = 0.005.
+
+*Source:* Author's calculations from Philippine Statistics Authority, World Bank, FRED/ALFRED, NOAA and Federal Reserve Board data.
+:::
 
 
 Joint model: 171 quarters, R² = 0.19. Sums of the lag
-coefficients: oil -0.33, US demand -1.01, El Niño
--1.53, financial conditions -9.40. Wald test that all
+coefficients: oil −0.33, US demand −1.01, El Niño
+−1.53, financial conditions −9.40. Wald test that all
 shock coefficients are zero: p < 0.001.
 
 # D. Inheritance (RQ3) and the same point in the term (RQ4)
 
 
-**Table 5. Was first-year growth inherited?**
 
 | Administration | Forecast made in | Actual first-year growth | AR forecast | Bounce-back forecast | Inherited (H3 rule) |
-|---|---|---|---|---|---|
+|:----------------------|:--------------|-----------------:|--------------:|------------------:|:----------------|
 | C. Aquino | 1986Q2 | 4.51 | 4.31 | 4.64 | yes |
 | Ramos | 1992Q3 | 2.34 | 3.01 | 1.05 | no |
 | Estrada | 1998Q3 | 3.53 | 3.01 | 2.40 | no |
@@ -105,62 +123,83 @@ shock coefficients are zero: p < 0.001.
 | Duterte | 2016Q3 | 7.14 | 4.24 | 4.81 | no |
 | Marcos Jr. | 2022Q3 | 5.75 | 4.20 | 4.88 | yes |
 
-*Note.* Growth over the first four charged quarters, 100·ln(GDP_s+3 / GDP_s−1), percent. Sample mean 3.70%. 'Inherited' if the bounce-back forecast exceeds the mean by at least half of the actual excess.
+Table: Table 5. Was first-year growth inherited?
+
+::: {custom-style="Table Note"}
+*Notes:* Growth over the first four charged quarters, 100·ln(GDP_s+3 / GDP_s−1), percent. Sample mean 3.70%. 'Inherited' if the bounce-back forecast exceeds the mean by at least half of the actual excess.
+
+*Source:* Author's calculations from Philippine Statistics Authority, World Bank, FRED/ALFRED, NOAA and Federal Reserve Board data.
+:::
 
 
 
-**Table 6. The same point in the term: the first 15 quarters**
 
-| Administration | First 15 quarters | Raw mean | Marcos Jr. minus this (s.e.) | Luck-adjusted mean | Marcos Jr. minus this (s.e.) |
-|---|---|---|---|---|---|
-| C. Aquino | 1986Q3–1990Q1 | 5.17 | -0.58 (1.48) | 5.14 | -0.88 (2.16) |
+| Administration | First 15 quarters | Raw mean | Difference (s.e.) | Luck-adjusted mean | Difference  (s.e.) |
+|:----------------------|:-------------------|----------:|-----------------:|---------------------:|-----------------:|
+| C. Aquino | 1986Q3–1990Q1 | 5.17 | −0.58 (1.48) | 5.14 | −0.88 (2.16) |
 | Ramos | 1992Q4–1996Q2 | 4.54 | +0.05 (0.90) | 3.64 | +0.62 (1.38) |
-| Arroyo | 2001Q2–2004Q4 | 5.09 | -0.50 (0.96) | 4.60 | -0.35 (1.41) |
-| Aquino III | 2010Q4–2014Q2 | 6.02 | -1.43 (1.01) | 4.29 | -0.04 (1.42) |
+| Arroyo | 2001Q2–2004Q4 | 5.09 | −0.50 (0.96) | 4.60 | −0.35 (1.41) |
+| Aquino III | 2010Q4–2014Q2 | 6.02 | −1.43 (1.01) | 4.29 | −0.04 (1.42) |
 | Duterte | 2016Q4–2020Q2 | 1.24 | +3.35 (4.79) | 1.21 | +3.05 (4.54) |
 | Marcos Jr. | 2022Q4–2026Q2 | 4.59 |  | 4.26 |  |
 
-*Note.* Percent, annual rate. Luck-adjusted growth removes the fitted shock component of the joint model. Estrada (10 quarters) and Marcos Sr. (first quarters outside the sample) are not compared. Newey–West standard errors; the luck-adjusted ones ignore the estimation error of the shock component.
+Table: Table 6. The same point in the term: the first 15 quarters
+
+::: {custom-style="Table Note"}
+*Notes:* Percent, annual rate. Difference = Marcos Jr. minus the administration in the row. Luck-adjusted growth removes the fitted shock component of the joint model. Estrada (10 quarters) and Marcos Sr. (first quarters outside the sample) are not compared. Newey–West standard errors; the luck-adjusted ones ignore the estimation error of the shock component.
+
+*Source:* Author's calculations from Philippine Statistics Authority, World Bank, FRED/ALFRED, NOAA and Federal Reserve Board data.
+:::
 
 
 # E. Robustness
 
 
-**Table 7. Robustness**
 
 | Specification | Shift-test p | Luck share S | Aquino III premium | Marcos Jr. premium |
-|---|---|---|---|---|
+|:---------------------------------------|-----------------:|----------:|-------------:|-------------:|
 | Main | 0.44 | 0.48 | +2.22 | +0.56 |
 | Timing lag 0 | 0.27 | 0.33 | +2.15 | +0.79 |
 | Timing lag 2 | 0.34 | 0.40 | +2.32 | +0.35 |
 | Timing lag 4 | 0.26 | 0.39 | +2.77 | +0.83 |
-| Excluding 2020Q2-2021Q1 | 0.42 | 0.47 | +2.15 | +0.50 |
-| Excluding 1984Q1-1985Q4 | 0.86 | 0.12 | +1.83 | +0.18 |
+| Excluding 2020Q2–2021Q1 | 0.42 | 0.47 | +2.15 | +0.50 |
+| Excluding 1984Q1–1985Q4 | 0.86 | 0.12 | +1.83 | +0.18 |
 | Log growth | 0.43 | 0.43 | +2.35 | +0.77 |
-| Lags 1-6 | 0.44 | 0.51 | +2.22 | +0.56 |
+| Lags 1–6 | 0.44 | 0.51 | +2.22 | +0.56 |
 | Foreign demand US-JP-EA (from 1997) | 0.44 | 0.11 | +2.22 | +0.56 |
 
-*Note.* All checks were specified before estimation. Premiums are raw quarterly premiums (percentage points).
+Table: Table 7. Robustness checks
+
+::: {custom-style="Table Note"}
+*Notes:* All checks were specified before estimation. Premiums are raw quarterly premiums (percentage points).
+
+*Source:* Author's calculations from Philippine Statistics Authority, World Bank, FRED/ALFRED, NOAA and Federal Reserve Board data.
+:::
 
 
 # F. Scorecard (Objective 1)
 
 
-**Table 8. Scorecard, annual averages 1962–2025 (z-score in parentheses)**
 
 | Administration | GDP growth | Growth per person | Relative to peers | Inflation | Unemployment (1991–) |
-|---|---|---|---|---|---|
-| Macapagal | 5.02 (+0.26) | 1.92 (-0.04) | 0.02 (+0.37) | 5.54 (-0.34) |  |
-| Marcos Sr. | 3.70 (-0.14) | 1.16 (-0.26) | -2.97 (-0.51) | 14.32 (+0.74) |  |
-| C. Aquino | 3.32 (-0.26) | 0.81 (-0.36) | -4.50 (-0.95) | 10.20 (+0.23) | 3.79 (+0.79) |
-| Ramos | 3.53 (-0.19) | 1.24 (-0.24) | -0.84 (+0.12) | 7.71 (-0.07) | 3.70 (+0.64) |
-| Estrada | 3.79 (-0.11) | 1.33 (-0.21) | -1.09 (+0.04) | 4.96 (-0.41) | 3.76 (+0.74) |
-| Arroyo | 4.71 (+0.17) | 2.85 (+0.24) | -0.00 (+0.36) | 4.64 (-0.45) | 3.69 (+0.62) |
-| Aquino III | 6.03 (+0.57) | 4.43 (+0.70) | 1.67 (+0.85) | 2.64 (-0.70) | 3.33 (+0.00) |
-| Duterte | 3.61 (-0.17) | 2.74 (+0.20) | 0.93 (+0.63) | 3.78 (-0.56) | 2.61 (-1.23) |
-| Marcos Jr. | 5.08 (+0.28) | 4.36 (+0.68) | 1.14 (+0.69) | 3.62 (-0.58) | 2.21 (-1.90) |
+|:----------------------|----------------:|----------------:|-----------------:|-----------------:|--------------------:|
+| Macapagal | 5.02 (+0.26) | 1.92 (−0.04) | 0.02 (+0.37) | 5.54 (−0.34) |  |
+| Marcos Sr. | 3.70 (−0.14) | 1.16 (−0.26) | −2.97 (−0.51) | 14.32 (+0.74) |  |
+| C. Aquino | 3.32 (−0.26) | 0.81 (−0.36) | −4.50 (−0.95) | 10.20 (+0.23) | 3.79 (+0.79) |
+| Ramos | 3.53 (−0.19) | 1.24 (−0.24) | −0.84 (+0.12) | 7.71 (−0.07) | 3.70 (+0.64) |
+| Estrada | 3.79 (−0.11) | 1.33 (−0.21) | −1.09 (+0.04) | 4.96 (−0.41) | 3.76 (+0.74) |
+| Arroyo | 4.71 (+0.17) | 2.85 (+0.24) | −0.00 (+0.36) | 4.64 (−0.45) | 3.69 (+0.62) |
+| Aquino III | 6.03 (+0.57) | 4.43 (+0.70) | 1.67 (+0.85) | 2.64 (−0.70) | 3.33 (+0.00) |
+| Duterte | 3.61 (−0.17) | 2.74 (+0.20) | 0.93 (+0.63) | 3.78 (−0.56) | 2.61 (−1.23) |
+| Marcos Jr. | 5.08 (+0.28) | 4.36 (+0.68) | 1.14 (+0.69) | 3.62 (−0.58) | 2.21 (−1.90) |
 
-*Note.* Percent; z = (administration mean − 1962–2025 mean) / standard deviation of the annual values. For inflation and unemployment a negative z means a lower rate than usual. No composite index is formed and administrations are not ranked. Unemployment is the ILO modelled estimate (1991–).
+Table: Table 8. Scorecard, annual averages 1962–2025 (z-score in parentheses)
+
+::: {custom-style="Table Note"}
+*Notes:* Percent; z = (administration mean − 1962–2025 mean) / standard deviation of the annual values. For inflation and unemployment a negative z means a lower rate than usual. No composite index is formed and administrations are not ranked. Unemployment is the ILO modelled estimate (1991–).
+
+*Source:* Author's calculations from Philippine Statistics Authority, World Bank, FRED/ALFRED, NOAA and Federal Reserve Board data.
+:::
 
 
 # G. Files

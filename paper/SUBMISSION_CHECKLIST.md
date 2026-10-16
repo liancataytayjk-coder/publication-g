@@ -6,15 +6,20 @@ What remains before the manuscript can be submitted. The manuscript is
 
 ## For the author to supply or decide
 
-- [ ] **Author block:** name, affiliation, email (placeholders `[Author name]`,
-      `[Affiliation]`, `[email]` in the template's front matter).
-- [ ] **Target journal:** candidates are *The Philippine Review of Economics*,
-      *Asian Economic Journal* and *Journal of Asian Economics*. Once chosen, apply
-      its format (word limit, abstract length, reference style, title page, blind
-      review copy). The draft is about 5,000 words of text plus 8 tables and 6
-      figures (about 15 pages in the preview).
-- [ ] **Use-of-AI statement:** the Declarations contain a bracketed draft; check
-      the chosen journal's policy and finalize the wording.
+- [x] **Author block:** Lian Cataytay, University of Southeastern Philippines,
+      lrcataytay00745@usep.edu.ph (title page, with the affiliation in a footnote).
+- [x] **Target journal:** *Asian Economic Journal*.
+- [ ] **AEJ author guide:** the journal's pages on Wiley could not be opened from
+      the computing environment (403). Upload the guide (or paste its rules) so we
+      can apply its word limit, abstract length, reference style and any
+      anonymous-review rules. Until then the manuscript uses the house style
+      (Times New Roman 12, double-spaced, 1-inch margins, author–date references,
+      tables and figures one per page at the end): 26 pages, about 2,900 words of
+      main text, a 233-word abstract, 8 tables and 6 figures.
+- [ ] **Anonymous copy:** if AEJ uses anonymous review, we will produce a copy
+      without the author block and with self-identifying text removed.
+- [ ] **Use-of-AI statement:** the Declarations contain a draft, marked "[Author
+      to confirm against the journal's policy]"; finalize it against AEJ's policy.
 - [ ] **Repository URL** in the data and code statement (`[repository URL to be
       inserted]`). If the repository stays private, deposit a replication package
       (for example on Zenodo or openICPSR) and cite it.
@@ -42,6 +47,9 @@ What remains before the manuscript can be submitted. The manuscript is
 - [x] Every number in the text and tables comes from `output/tables/` through
       `output/tables/paper_numbers.json`.
 - [x] Figures are black and white, without titles, in PNG, TIFF and PDF
-      (`output/figures/`).
+      (`output/figures/`), set in Times New Roman.
+- [x] House style applied and checked (`check_style.py`: OK). The PDF was made
+      with Liberation Serif, which has the same letter widths as Times New Roman;
+      exporting the .docx from Word gives true Times New Roman.
 - [x] Fragile results are presented as fragile (the luck share S).
 - [x] `./run_all.sh` rebuilds everything from `data/raw/`.
