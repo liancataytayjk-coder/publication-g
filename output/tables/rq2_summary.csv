@@ -1,0 +1,15 @@
+item,value
+joint sample,1983Q4-2026Q2
+quarters,171
+"share of premium dispersion explained by luck, S",0.4804
+H2 verdict,H2a (0.35-0.65)
+"Wald test all shock lags = 0, p",1.2951946072420557e-06
+R2,0.19
+"Wald test oil lags = 0, p",0.08917748478496662
+sum of oil lag coefficients,-0.32741862498937063
+"Wald test us lags = 0, p",0.534731858826047
+sum of us lag coefficients,-1.010994976812939
+"Wald test elnino lags = 0, p",0.8403308239570104
+sum of elnino lag coefficients,-1.5256120744274442
+"Wald test ebp lags = 0, p",0.004779419600018076
+sum of ebp lag coefficients,-9.3962561694798

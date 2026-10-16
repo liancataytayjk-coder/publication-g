@@ -4,7 +4,7 @@
 administrations, 1961–2026.* A replication of Blinder and Watson (2016,
 *American Economic Review*) on Philippine data.
 
-Status: Phase 1 (research design) complete; Phase 2 (data) under way: all raw data downloaded and logged. No Philippine estimates yet.
+Status: data, replication gate (passed), estimation and figures complete (`output/`). Documents (manuscript) not yet written. Rebuild everything with `./run_all.sh`.
 
 | File | What it is |
 | --- | --- |

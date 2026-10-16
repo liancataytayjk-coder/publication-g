@@ -248,9 +248,51 @@ composite index and no ranking of presidents.
 Japan and euro-area growth (sample from 1997); (g) Vietnam added to the peers
 (annual, from 1985).
 
-## Results
+## Results (2026-10-16; `output/tables/`, all pre-registered unless labelled)
 
-None yet.
+- **RQ1: H1a not supported; H1b rejected (the opposite holds).** Quarterly raw
+  premiums, 1981Q2–2026Q2 (`rq1_premiums_q.csv`): Marcos Sr. (1981–86 only)
+  −4.22 (s.e. 2.26, p = 0.06, Holm 0.44), C. Aquino −0.77 (1.38), Ramos −0.24
+  (0.93), Estrada −0.54 (0.83), Arroyo +1.07 (0.70), Aquino III +2.22 (0.72;
+  p = 0.002, Holm 0.017, the only one that survives), Duterte +0.70 (1.84),
+  Marcos Jr. +0.56 (0.90, p = 0.53). Shift test p = 0.44 (per person 0.28):
+  the spread of administration averages is what chance alone would give.
+  Annual 1962–2025: shift test p = 1.00 (every other alignment of the calendar
+  gives a larger spread; Marcos Sr.'s 20-year block averages boom and bust).
+  Relative to Indonesia, Malaysia and Thailand the spread is 2.4 times *larger*,
+  not smaller: Marcos Sr. −1.73, C. Aquino −3.26, Aquino III +2.90, Duterte
+  +2.16, Marcos Jr. +2.37 (`rq1_premiums_a.csv`). The Philippines lagged its
+  peers badly before 1992 and has outgrown them since 2011.
+- **RQ2: S = 0.48 (H2a by the pre-set rule), but fragile.** Joint model
+  1983Q4–2026Q2 (`rq2_joint.csv`, `rq2_summary.csv`). The shocks matter jointly
+  (Wald p < 0.001); the excess bond premium is significant (p = 0.005), oil
+  borderline (p = 0.09), US demand (p = 0.53, negative sum) and El Niño
+  (p = 0.84) are not. Much of S comes from Marcos Sr.'s 11 crisis quarters,
+  where the US term (US boom while the Philippines collapsed) "explains" −2.0
+  points. S falls to 0.12 without 1984–85 and to 0.11 with the US–Japan–euro
+  area composite; 0.33–0.40 with other timing lags (`robustness.csv`). Aquino
+  III: premium 2.14, of which luck 1.04 (s.e. 0.78). Marcos Jr.: 0.49, luck
+  0.33 (0.24), unexplained 0.16.
+- **RQ3: H3 supported for C. Aquino and Marcos Jr.** (`rq3_inheritance.csv`).
+  First-year growth against the bounce-back forecast made the quarter before
+  taking office (sample mean 3.70): C. Aquino 4.51 vs 4.64; Marcos Jr. 5.75 vs
+  4.88 (forecast excess 1.18 ≥ half the actual excess 2.05). Duterte's first
+  year (7.14 vs 4.81) beat the forecast; Ramos (2.34 vs 1.05) also did.
+- **RQ4 (descriptive).** First 15 quarters (`rq4_same_point.csv`), raw /
+  luck-adjusted: Marcos Jr. 4.59 / 4.26; C. Aquino 5.17 / 5.14; Ramos 4.54 /
+  3.64; Arroyo 5.09 / 4.60; Aquino III 6.02 / 4.29; Duterte 1.24 / 1.21 (his
+  first 15 quarters end in 2020Q2). No difference from Marcos Jr. is larger
+  than 1.5 standard errors.
+- **Objective 1 (`scorecard.csv`).** Marcos Jr. 2023–25: growth 5.08% (z
+  +0.28), per person 4.36% (+0.68), relative to peers +1.14 (+0.69), inflation
+  3.62% (−0.58), unemployment 2.21% (−1.90, lowest since 1991 on the ILO
+  modelled series).
+- **Robustness:** the Aquino III raw premium stays between 1.83 and 2.77 in every
+  check; Marcos Jr.'s stays between 0.18 and 0.83; the shift-test p never falls
+  below 0.26.
+- **Bug fix (not a specification change):** the first run of `05_estimate.py`
+  cut the oil and El Niño series at 1981, so their single-shock models started
+  in 1982Q3; fixed to the planned 1981Q2. The joint model was unaffected.
 
 ## Documents
 
@@ -261,7 +303,9 @@ None yet.
 
 `scripts/01_download_*.py` (raw data) → `scripts/00_get_x13.sh` (X-13 binary
 into `.tools/`, not committed) → `scripts/02_clean.py` (processed tables,
-seasonal adjustment) → `scripts/04_replicate.py` (gate) → estimation (to come).
+seasonal adjustment) → `scripts/03_build_panel.py` → `scripts/04_replicate.py` (gate) →
+`scripts/05_estimate.py` (RQ1–RQ4, scorecard, robustness) → `scripts/06_figures.py`.
+Documents (manuscript from templates) to come.
 Estimator and helpers in `phadmin/`; simulation tests in `tests/` (11 pass).
 `./run_all.sh` rebuilds everything from `data/raw/`.
 

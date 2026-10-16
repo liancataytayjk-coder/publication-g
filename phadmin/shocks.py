@@ -25,6 +25,6 @@ def purge(e, y, own_lags=4, y_lags=4):
     X = {f"e_l{j}": e.shift(j) for j in range(1, own_lags + 1)}
     X.update({f"y_l{j}": y.shift(j) for j in range(0, y_lags + 1)})
     X = pd.DataFrame(X)
-    d = pd.concat([e.rename("e"), X], axis=1).dropna()
+    d = pd.concat([e.rename("e"), X], axis=1).dropna()  # rows where both e and y lags exist
     res = sm.OLS(d["e"], sm.add_constant(d.drop(columns="e"))).fit()
     return res.resid.reindex(e.index)

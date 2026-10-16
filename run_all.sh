@@ -9,6 +9,7 @@ fi
 bash scripts/00_get_x13.sh
 $PY -m pytest -q
 $PY scripts/02_clean.py
+$PY scripts/03_build_panel.py
 $PY scripts/04_replicate.py
 for s in scripts/05_*.py scripts/06_*.py scripts/07_*.py scripts/08_*.py; do
   [ -e "$s" ] && $PY "$s"

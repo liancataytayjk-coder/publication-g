@@ -1,0 +1,8 @@
+test,p,dispersion
+"shift test, quarterly raw growth 1981Q2-2026Q2",0.4419889502762431,1.7763967474320321
+"shift test, quarterly per-person growth",0.27932960893854747,2.238268164596885
+"shift test, annual PSA growth (1962-2025)",1.0,0.8211707000258802
+"shift test, annual World Bank growth (1962-2025)",1.0,0.8338792838145772
+"shift test, growth relative to IDN-MYS-THA (1962-2025)",0.765625,1.9870736442542636
+"shift test, growth relative to IDN-MYS-THA-VNM (1985-2025)",0.5121951219512195,2.0960247606561557
+dispersion ratio: peer-relative / raw annual (H1b if < 0.5),,2.4198058262327655
